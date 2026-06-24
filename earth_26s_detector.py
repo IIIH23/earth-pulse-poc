@@ -56,15 +56,18 @@ TARGET_HIGH_HZ = 0.041
 TARGET_CENTER_HZ = 1.0 / 26.0
 BACKGROUND_BANDS_HZ = ((0.028, 0.0345), (0.0425, 0.049))
 
-# Weighted toward Africa/Gulf of Guinea, with a global reference station.
+# Weighted toward the South Atlantic / Gulf of Guinea source region, with quiet
+# and global reference stations.
 STATIONS = [
-    ("IU", "MSKU", "00", CHANNEL),  # Masuku, Gabon
-    ("II", "TAM", "00", CHANNEL),   # Tamanrasset, Algeria
+    ("II", "SHEL", "00", CHANNEL),  # St. Helena, South Atlantic
+    ("II", "ASCN", "00", CHANNEL),  # Ascension Island, South Atlantic
     ("II", "BFO", "00", CHANNEL),   # Black Forest, Germany
     ("II", "MBAR", "00", CHANNEL),  # Mbarara, Uganda
     ("IU", "TSUM", "00", CHANNEL),  # Tsumeb, Namibia
     ("IU", "ANMO", "00", CHANNEL),  # Albuquerque, USA
 ]
+
+LOCATION_FALLBACKS = ("00", "10", "")
 
 
 # -----------------------------------------------------------------------------
@@ -109,19 +112,48 @@ def analyze_station(
     """Fetch one station's LHZ data and detect the 26 s spectral line."""
     code = f"{net}.{sta}"
     try:
-        if verbose:
-            print(f"  [{code}] fetching {chan} {start.isoformat()} -> {end.isoformat()}")
+        location_candidates = [loc]
+        for fallback in LOCATION_FALLBACKS:
+            if fallback not in location_candidates:
+                location_candidates.append(fallback)
 
-        st = client.get_waveforms(
-            network=net,
-            station=sta,
-            location=loc,
-            channel=chan,
-            starttime=start,
-            endtime=end,
-        )
-        if len(st) == 0:
-            return StationDetection(code, None, None, None, False, "no data returned")
+        st = None
+        used_location = None
+        errors = []
+        for location in location_candidates:
+            try:
+                label = location or "--"
+                if verbose:
+                    print(
+                        f"  [{code}] fetching {label}.{chan} "
+                        f"{start.isoformat()} -> {end.isoformat()}"
+                    )
+                candidate = client.get_waveforms(
+                    network=net,
+                    station=sta,
+                    location=location,
+                    channel=chan,
+                    starttime=start,
+                    endtime=end,
+                )
+                if len(candidate) == 0:
+                    errors.append(f"{label}: no data returned")
+                    continue
+                st = candidate
+                used_location = label
+                break
+            except Exception as exc:
+                errors.append(f"{location or '--'}: {str(exc).splitlines()[0]}")
+
+        if st is None:
+            return StationDetection(
+                code,
+                None,
+                None,
+                None,
+                False,
+                "; ".join(errors)[:200] if errors else "no data returned",
+            )
 
         st.merge(method=1, fill_value=0)
         tr = st[0]
@@ -180,7 +212,7 @@ def analyze_station(
         if verbose:
             status = "DETECTED" if detected else "below threshold"
             print(
-                f"  [{code}] {status}: period={period:.2f}s "
+                f"  [{code}] {status} ({used_location}.{chan}): period={period:.2f}s "
                 f"freq={peak_freq:.4f}Hz SNR={snr:.1f}"
             )
 
@@ -222,7 +254,7 @@ def detect_26s_microseism(
     verbose: bool = False,
 ) -> Microseism26sResult:
     """Fetch recent waveforms and detect the ~26-second microseism line."""
-    client = Client("IRIS")
+    client = Client("EARTHSCOPE")
     end = UTCDateTime() - 300  # LHZ data can lag by a few minutes.
     start = end - hours * 3600
 
@@ -274,16 +306,23 @@ def save_psd_plot(
     station_code = None
 
     for net, sta, loc, chan in STATIONS:
-        try:
-            st = client.get_waveforms(net, sta, loc, chan, start, end)
-            if len(st) == 0:
+        locations = [loc]
+        for fallback in LOCATION_FALLBACKS:
+            if fallback not in locations:
+                locations.append(fallback)
+        for location in locations:
+            try:
+                st = client.get_waveforms(net, sta, location, chan, start, end)
+                if len(st) == 0:
+                    continue
+                st.merge(method=1, fill_value=0)
+                trace = st[0]
+                station_code = f"{net}.{sta}.{location or '--'}"
+                break
+            except Exception:
                 continue
-            st.merge(method=1, fill_value=0)
-            trace = st[0]
-            station_code = f"{net}.{sta}"
+        if trace is not None:
             break
-        except Exception:
-            continue
 
     if trace is None or station_code is None:
         print("(no data available for plot)")
@@ -406,7 +445,7 @@ def main() -> int:
 
     if args.plot:
         try:
-            save_psd_plot(Client("IRIS"), args.hours, args.plot_path)
+            save_psd_plot(Client("EARTHSCOPE"), args.hours, args.plot_path)
         except Exception as exc:
             print(f"(plot failed: {exc})")
 

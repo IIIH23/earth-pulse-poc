@@ -1,5 +1,7 @@
-.venv/
 __pycache__/
-*.pyc
+*.py[cod]
+.venv/
 earth_period_plot.png
 earth_period_runs.jsonl
+earth_26s_runs.jsonl
+earth_26s_psd.png
