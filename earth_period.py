@@ -121,7 +121,7 @@ def fetch_and_analyze(
     code = f"{net}.{sta}"
     try:
         if verbose:
-            print(f"  [{code}] fetching {start.isoformat()} → {end.isoformat()}")
+            print(f"  [{code}] fetching {start.isoformat()} -> {end.isoformat()}")
         st = client.get_waveforms(
             network=net,
             station=sta,
@@ -260,7 +260,7 @@ def save_diagnostic_plot(
     try:
         import matplotlib.pyplot as plt
     except ImportError:
-        print("(matplotlib not installed — skipping plot)")
+        print("(matplotlib not installed - skipping plot)")
         return
 
     net, sta, loc, chan = STATIONS[0]
@@ -289,7 +289,7 @@ def save_diagnostic_plot(
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 6))
 
     ax1.plot(t, data, linewidth=0.5, color="#7FE5C8")
-    ax1.set_title(f"{sta} — bandpass filtered ({BAND_LOW_HZ}-{BAND_HIGH_HZ} Hz)")
+    ax1.set_title(f"{sta} - bandpass filtered ({BAND_LOW_HZ}-{BAND_HIGH_HZ} Hz)")
     ax1.set_xlabel("seconds")
     ax1.set_ylabel("amplitude")
     ax1.grid(alpha=0.3)
@@ -314,7 +314,7 @@ def save_diagnostic_plot(
 # -----------------------------------------------------------------------------
 def print_report(rhythm: EarthRhythm, verbose: bool) -> None:
     print("=" * 56)
-    print(f"  Earth Pulse — calibration report")
+    print(f"  Earth Pulse - calibration report")
     print(f"  {rhythm.timestamp_utc.isoformat(timespec='seconds')}")
     print("=" * 56)
     if np.isnan(rhythm.period_s):
@@ -329,20 +329,20 @@ def print_report(rhythm: EarthRhythm, verbose: bool) -> None:
         # Breathing recommendation
         half = rhythm.period_s / 2
         print()
-        print(f"  → Recommended breathing: "
+        print(f"  -> Recommended breathing: "
               f"{half:.1f}s inhale / {half:.1f}s exhale")
         # Compare to 13/13 baseline
         delta = rhythm.period_s - 26.0
-        print(f"  → Deviation from 13/13 baseline (26 s): {delta:+.2f} s")
+        print(f"  -> Deviation from 13/13 baseline (26 s): {delta:+.2f} s")
     print()
 
     if verbose or rhythm.confidence < 0.6:
         print("Per-station detail:")
         for r in rhythm.per_station:
             if r.ok:
-                print(f"  ✓ {r.code:10s} period = {r.period_s:5.2f} s")
+                print(f"  OK  {r.code:10s} period = {r.period_s:5.2f} s")
             else:
-                print(f"  ✗ {r.code:10s} {r.error}")
+                print(f"  ERR {r.code:10s} {r.error}")
         print()
 
 
