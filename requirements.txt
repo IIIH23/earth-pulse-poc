@@ -2,3 +2,4 @@ numpy
 obspy
 matplotlib
 scipy
+scipy

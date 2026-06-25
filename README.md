@@ -21,7 +21,23 @@ python earth_period.py --hours 6 --verbose
 python earth_26s_detector.py --hours 24 --verbose
 python earth_26s_detector.py --hours 24 --plot
 python collect_earth_26s.py --hours 6 --verbose
+python generate_earth_pulse_json.py --hours 6 --output earth-pulse.json --verbose
 ```
 
 The 26-second line is intermittent. A non-detection for a short or quiet window
 is expected; use `--hours 12` to `--hours 24` for a stronger check.
+
+## Serverless app feed
+
+`earth-pulse.json` is the public feed for the app. GitHub Actions refreshes it
+every 6 hours with `.github/workflows/update-earth-pulse.yml`.
+
+The app should:
+
+- use `breathing_rhythm` for the fixed 13s inhale / 13s exhale timer;
+- use `app_pulse` for onboarding and the "Earth pulse today" card;
+- fall back gracefully when `app_pulse.source` is `last_good_measurement` or
+  `baseline`.
+
+The exact JSON contract is documented in
+`docs/earth-pulse-json-contract.md`.
