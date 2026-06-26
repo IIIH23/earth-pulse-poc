@@ -12,3 +12,5 @@ coverage/
 *.log
 secrets/
 credentials/
+
+.autopilot.lock
