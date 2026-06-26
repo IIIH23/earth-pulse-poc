@@ -7,8 +7,8 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Objectives: Review repository structure, current assets, assumptions, and missing project controls.
 - Success criteria: Inventory exists, gaps are ranked, and immediate risks are visible.
 - Estimated effort: S
-- Progress: Created audit/FILE_INVENTORY.md (commit 6ec83a1)
-- Next actionable task: Analyze inventory and rank gaps.
+- Progress: Created audit/FILE_INVENTORY.md (commit 6ec83a1). Latest audit executed by night-shift autopilot; see logs/AUTOPILOT_LOG.md for details.
+- Next actionable task: Create minimal smoke tests and CI workflow skeleton to validate repository invariants.
 
 ## 2. Port Logic
 
@@ -45,7 +45,7 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Estimated effort: M
 - Next actionable task: Define which project artifacts should be mirrored to GitHub.
 
-## 7. Tests & Smoke-Tests
+## 7. Deterministic Workflows & Tests
 
 - Objectives: Add focused checks that validate core logic and basic operational workflows.
 - Success criteria: Targeted tests and smoke-tests can run locally with documented commands.
