@@ -11,3 +11,9 @@
 - Committed initial autopilot files (ROADMAP.md, AUTOPILOT_STATE.md, docs/DECISIONS.md, logs/AUTOPILOT_LOG.md).
 - Commit: ce1b4d3
 - Next: run repository audit (list and classify files).
+
+## 2026-06-26T19:35:46Z
+
+- Created file inventory at audit/FILE_INVENTORY.md and committed (commit 6ec83a1).
+- Updated ROADMAP.md and AUTOPILOT_STATE.md to record progress and next steps.
+- Next: Analyze the inventory, rank gaps, and plan porting of core logic.

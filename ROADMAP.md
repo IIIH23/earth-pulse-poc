@@ -7,7 +7,8 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Objectives: Review repository structure, current assets, assumptions, and missing project controls.
 - Success criteria: Inventory exists, gaps are ranked, and immediate risks are visible.
 - Estimated effort: S
-- Next actionable task: List current files and classify them as code, docs, data, or operations.
+- Progress: Created audit/FILE_INVENTORY.md (commit 6ec83a1)
+- Next actionable task: Analyze inventory and rank gaps.
 
 ## 2. Port Logic
 
