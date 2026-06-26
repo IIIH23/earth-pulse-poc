@@ -1,10 +1,10 @@
 {
   "app_pulse": {
-    "frequency_hz": 0.03723273816076889,
-    "fresh": false,
-    "measured_at_utc": "2026-06-25T20:22:43.850629+00:00",
-    "period_s": 26.858083756345174,
-    "source": "last_good_measurement"
+    "frequency_hz": 0.039119804400977995,
+    "fresh": true,
+    "measured_at_utc": "2026-06-26T09:52:33.429287+00:00",
+    "period_s": 25.5625,
+    "source": "current_measurement"
   },
   "breathing_rhythm": {
     "exhale_s": 13.0,
@@ -25,21 +25,21 @@
       ]
     ],
     "best_station": {
-      "code": "II.MBAR",
+      "code": "II.BFO",
       "detected": true,
       "error": null,
-      "frequency_hz": 0.0363906424062384,
-      "label": "Mbarara, Uganda",
-      "period_s": 27.47959183673469,
-      "snr": 3.3326482089731226
+      "frequency_hz": 0.039119804400977995,
+      "label": "Black Forest, Germany",
+      "period_s": 25.5625,
+      "snr": 4.215368252590117
     },
-    "confidence_label": "low (single station; confirm with a longer window)",
+    "confidence_label": "medium (multiple stations, some spread)",
     "detected": true,
-    "frequency_hz": 0.0363906424062384,
-    "measured_at_utc": "2026-06-26T04:39:56.380187+00:00",
-    "median_snr": 2.04826222092575,
-    "period_s": 27.47959183673469,
-    "quality_status": "weak_single_station",
+    "frequency_hz": 0.039119804400977995,
+    "measured_at_utc": "2026-06-26T09:52:33.429287+00:00",
+    "median_snr": 2.8148625501050777,
+    "period_s": 25.5625,
+    "quality_status": "confirmed",
     "snr_threshold": 3.0,
     "station_errors": 0,
     "stations": [
@@ -47,59 +47,59 @@
         "code": "II.SHEL",
         "detected": false,
         "error": null,
-        "frequency_hz": 0.038579067990832695,
+        "frequency_hz": 0.03749764462031279,
         "label": "St. Helena, South Atlantic",
-        "period_s": 25.92079207920792,
-        "snr": 1.7774863420703633
+        "period_s": 26.668341708542716,
+        "snr": 1.6338939805169632
       },
       {
         "code": "II.ASCN",
-        "detected": false,
+        "detected": true,
         "error": null,
-        "frequency_hz": 0.036479879654005266,
+        "frequency_hz": 0.03643955209717214,
         "label": "Ascension Island, South Atlantic",
-        "period_s": 27.412371134020617,
-        "snr": 1.8539115629795593
+        "period_s": 27.442708333333332,
+        "snr": 3.0898510831686927
       },
       {
         "code": "II.BFO",
-        "detected": false,
+        "detected": true,
         "error": null,
-        "frequency_hz": 0.036918440384253154,
+        "frequency_hz": 0.039119804400977995,
         "label": "Black Forest, Germany",
-        "period_s": 27.086734693877553,
-        "snr": 2.2426128788719404
+        "period_s": 25.5625,
+        "snr": 4.215368252590117
       },
       {
         "code": "II.MBAR",
-        "detected": true,
+        "detected": false,
         "error": null,
-        "frequency_hz": 0.0363906424062384,
+        "frequency_hz": 0.03636017513801637,
         "label": "Mbarara, Uganda",
-        "period_s": 27.47959183673469,
-        "snr": 3.3326482089731226
+        "period_s": 27.502617801047123,
+        "snr": 1.7893189482143566
       },
       {
         "code": "IU.TSUM",
-        "detected": false,
+        "detected": true,
         "error": null,
-        "frequency_hz": 0.039629629629629626,
+        "frequency_hz": 0.04092592592592592,
         "label": "Tsumeb, Namibia",
-        "period_s": 25.233644859813086,
-        "snr": 1.1028822342235183
+        "period_s": 24.434389140271495,
+        "snr": 3.372476922883127
       },
       {
         "code": "IU.ANMO",
         "detected": false,
         "error": null,
-        "frequency_hz": 0.039074074074074074,
+        "frequency_hz": 0.03925925925925926,
         "label": "Albuquerque, New Mexico",
-        "period_s": 25.592417061611375,
-        "snr": 2.405186125526094
+        "period_s": 25.471698113207548,
+        "snr": 2.539874017041462
       }
     ],
     "stations_attempted": 6,
-    "stations_detected": 1,
+    "stations_detected": 3,
     "target_band_hz": [
       0.036,
       0.041
@@ -108,8 +108,8 @@
     "target_period_s": 26.0,
     "window_hours": 6.0
   },
-  "expires_at_utc": "2026-06-26T16:39:56.380210+00:00",
-  "generated_at_utc": "2026-06-26T04:39:56.380210+00:00",
+  "expires_at_utc": "2026-06-26T21:52:33.429308+00:00",
+  "generated_at_utc": "2026-06-26T09:52:33.429308+00:00",
   "history": [
     {
       "best_snr": 5.4645224771470735,
@@ -230,25 +230,37 @@
       "quality_status": "weak_single_station",
       "stations_attempted": 6,
       "stations_detected": 1
+    },
+    {
+      "best_snr": 4.215368252590117,
+      "best_station_code": "II.BFO",
+      "detected": true,
+      "frequency_hz": 0.039119804400977995,
+      "measured_at_utc": "2026-06-26T09:52:33.429287+00:00",
+      "median_snr": 2.8148625501050777,
+      "period_s": 25.5625,
+      "quality_status": "confirmed",
+      "stations_attempted": 6,
+      "stations_detected": 3
     }
   ],
   "last_good_measurement": {
     "best_station": {
-      "code": "IU.ANMO",
+      "code": "II.BFO",
       "detected": true,
       "error": null,
-      "frequency_hz": 0.03648148148148148,
-      "label": "Albuquerque, New Mexico",
-      "period_s": 27.411167512690355,
-      "snr": 3.607885499998858
+      "frequency_hz": 0.039119804400977995,
+      "label": "Black Forest, Germany",
+      "period_s": 25.5625,
+      "snr": 4.215368252590117
     },
-    "confidence_label": "high (multiple stations, tight agreement)",
-    "frequency_hz": 0.03723273816076889,
-    "measured_at_utc": "2026-06-25T20:22:43.850629+00:00",
-    "median_snr": 2.4757533248114303,
-    "period_s": 26.858083756345174,
+    "confidence_label": "medium (multiple stations, some spread)",
+    "frequency_hz": 0.039119804400977995,
+    "measured_at_utc": "2026-06-26T09:52:33.429287+00:00",
+    "median_snr": 2.8148625501050777,
+    "period_s": 25.5625,
     "stations_attempted": 6,
-    "stations_detected": 2
+    "stations_detected": 3
   },
   "schema_version": "1.0.0"
 }
