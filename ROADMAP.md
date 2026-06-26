@@ -9,6 +9,7 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Estimated effort: S
 - Progress: Created audit/FILE_INVENTORY.md (commit 6ec83a1). Latest audit executed by night-shift autopilot; see logs/AUTOPILOT_LOG.md for details.
 - Next actionable task: Create minimal smoke tests and CI workflow skeleton to validate repository invariants.
+- Recent update: Minimal smoke test and CI workflow skeleton files were created locally (tests/smoke_test.sh, .github/workflows/smoke.yml). Local smoke test passed ("Smoke test passed: 2 required files found; 0 Python file(s) compiled."). Commit was created locally in this cycle (autopilot cycle 6).
 
 ## 2. Port Logic
 
