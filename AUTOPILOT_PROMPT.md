@@ -64,3 +64,13 @@ At the end:
 
 1. Remove `.autopilot.lock`.
 2. Also remove it before stopping after a handled error.
+
+## Git policy
+
+- Local Git commits are allowed automatically after successful tests.
+- Do not ask for approval before a local commit.
+- Never run `git push`.
+- Never create a pull request.
+- Never change Git remotes without explicit approval.
+- Every commit must represent one small completed task.
+- Include the commit hash in the Telegram report.
