@@ -2,8 +2,8 @@
 
 - Current autopilot role: Coordinate repository setup and maintain lightweight project operating records.
 - Current cycle number: 8
-- Task in progress: Add additional focused tests and CI checks (adding a pytest-based focused test for tools/inventory.py).
-- Last action: Created tests/test_inventory_pytest.py (uncommitted). Attempted to run pytest but it is not installed in this environment.
-- Last commit: none (tests could not be executed; commit deferred).
-- Blocker: pytest not installed in this environment. Install pytest or run the verification in an environment with pytest available to execute the new test and proceed to commit.
-- Next action: (1) Run tests in a writable environment with pytest available; (2) if tests pass, create a local commit; (3) update ROADMAP.md and AUTOPILOT_LOG.md with the commit hash and test results.
+- Task status: Completed — added a focused pytest for tools/inventory and verified locally.
+- Last action: Created tests/test_inventory_pytest.py and executed it in a project-local virtualenv; all tests passed.
+- Last commit: cdc8b63
+- Blocker: none (pytest installed locally in .venv_autopilot for verification)
+- Next action: Continue with wiring CI checks for focused tests and incremental dependency locking; prepare a reproducible verifier script for human/CI runs.
