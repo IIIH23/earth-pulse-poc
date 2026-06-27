@@ -44,8 +44,17 @@
 
 ## 2026-06-26T23:46:55Z
 
-- Action: Autopilot cycle 6 — ran smoke tests (bash tests/smoke_test.sh) in /home/hermes/projects/pulse-of-earth.
+- Action: Autopilot cycle 6  ran smoke tests (bash tests/smoke_test.sh) in /home/hermes/projects/pulse-of-earth.
 - Result: Smoke tests PASSED (0 Python files compiled; required files present).
 - Action: Updated ROADMAP.md, AUTOPILOT_STATE.md, and this log; created a local git commit recording these changes.
 - .autopilot.lock: not present at commit time (no removal needed) or removed earlier in the cycle.
 - Next: Identify the first logic source to port and record its expected inputs and outputs (follow ROADMAP step: Port Logic).
+
+## 2026-06-27T01:50:59Z
+
+- Action: Autopilot cycle 7  selected the first logic source to port: the audit/file-inventory generator (audit/FILE_INVENTORY.md).
+- Action: Wrote specification at docs/PORTING_FIRST_SOURCE.md describing inputs, outputs, and the minimal CLI surface for a tools/inventory.py implementation.
+- Action: Updated ROADMAP.md and AUTOPILOT_STATE.md to record the selection and next steps.
+- Tests: Ran smoke tests (bash tests/smoke_test.sh)  PASSED.
+- Commit: created in this cycle (see local commit below).
+- Next: Implement tools/inventory.py in a follow-up cycle and add a focused test that runs it on a small fixture.

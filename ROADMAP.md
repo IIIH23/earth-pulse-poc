@@ -17,6 +17,7 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Success criteria: Core logic runs locally and has a documented entry point.
 - Estimated effort: M
 - Next actionable task: Identify the first logic source to port and record its expected inputs and outputs.
+- Recent update: Selected the audit/file-inventory generator (audit/FILE_INVENTORY.md) as the first logic source to port. A specification has been recorded at docs/PORTING_FIRST_SOURCE.md describing inputs, outputs, and minimal CLI surface.
 
 ## 3. Hermes-Obsidian
 
