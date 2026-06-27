@@ -1,6 +1,7 @@
-PRODUCTION READINESS CHECKLIST
+# Production Readiness Checklist
 
-This document summarizes the production readiness plan for Pulse of Earth. It is a living document for operations and reviewers.
+> This document has been superseded by [PRODUCTION_READINESS_FINAL.md](PRODUCTION_READINESS_FINAL.md).
+> See also: [OWNER_ACTIONS.md](OWNER_ACTIONS.md) for the consolidated owner actions list.
 
 1) Application architecture
 
