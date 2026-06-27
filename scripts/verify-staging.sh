@@ -19,7 +19,7 @@ check() {
 
 report() {
   local title="$1"; shift
-  printf '\n== %s ==\n' "$title'
+  printf '\n== %s ==\n' "$title"
   "$@"
 }
 
@@ -28,9 +28,9 @@ check "docker command present" docker --version
 check "docker compose plugin present" docker compose version
 check "docker service active" systemctl is-active docker
 check "fail2ban service active" systemctl is-active fail2ban
-check "swap enabled" bash -c "swapon --show=NAME --noheadings | grep -q '^/swapfile$'"
+check "swap enabled" grep -q '^/swapfile$' <(swapon --show=NAME --noheadings)
 check "deploy user exists" id deploy
-check "deploy in docker group" bash -c "id -nG deploy | grep -qw docker"
+check "deploy in docker group" bash -c 'id -nG deploy | grep -qw docker'
 check "sshd config valid" sshd -t
 
 report "UFW" ufw status verbose
