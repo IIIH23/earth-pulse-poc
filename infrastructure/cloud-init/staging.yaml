@@ -1,0 +1,116 @@
+#cloud-config
+
+hostname: hermes-staging-01
+manage_etc_hosts: true
+
+timezone: Europe/Kyiv
+
+users:
+  - default
+
+  - name: deploy
+    gecos: TerraBits Deployment User
+    shell: /bin/bash
+    sudo: []
+    lock_passwd: true
+
+ssh_pwauth: false
+disable_root: true
+
+package_update: true
+package_upgrade: false
+
+packages:
+  - ca-certificates
+  - curl
+  - git
+  - jq
+  - ufw
+  - fail2ban
+  - unattended-upgrades
+  - apt-transport-https
+  - gnupg
+  - lsb-release
+
+write_files:
+  - path: /etc/sysctl.d/99-terrabits.conf
+    permissions: "0644"
+    content: |
+      vm.swappiness=10
+      vm.vfs_cache_pressure=50
+
+  - path: /etc/docker/daemon.json
+    permissions: "0644"
+    content: |
+      {
+        "log-driver": "json-file",
+        "log-opts": {
+          "max-size": "10m",
+          "max-file": "5"
+        },
+        "live-restore": true
+      }
+
+  - path: /etc/apt/apt.conf.d/20auto-upgrades
+    permissions: "0644"
+    content: |
+      APT::Periodic::Update-Package-Lists "1";
+      APT::Periodic::Unattended-Upgrade "1";
+
+  - path: /etc/fail2ban/jail.d/sshd.local
+    permissions: "0644"
+    content: |
+      [sshd]
+      enabled = true
+      port = ssh
+      maxretry = 5
+      findtime = 10m
+      bantime = 1h
+
+runcmd:
+  # Create 2 GB swap
+  - fallocate -l 2G /swapfile
+  - chmod 600 /swapfile
+  - mkswap /swapfile
+  - swapon /swapfile
+  - echo '/swapfile none swap sw 0 0' >> /etc/fstab
+
+  # Install Docker from the official repository
+  - install -m 0755 -d /etc/apt/keyrings
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  - chmod a+r /etc/apt/keyrings/docker.asc
+  - |
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] \
+      https://download.docker.com/linux/ubuntu \
+      $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" \
+      > /etc/apt/sources.list.d/docker.list
+  - apt-get update
+  - apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+  # Ensure deploy user can access Docker
+  - usermod -aG docker deploy
+
+  # Firewall
+  - ufw default deny incoming
+  - ufw default allow outgoing
+  - ufw allow 22/tcp
+  - ufw allow 80/tcp
+  - ufw allow 443/tcp
+  - ufw --force enable
+
+  # Services
+  - systemctl enable --now docker
+  - systemctl enable --now fail2ban
+  - systemctl enable --now unattended-upgrades
+
+  # Project directories
+  - mkdir -p /opt/terrabits/apps
+  - mkdir -p /opt/terrabits/backups
+  - mkdir -p /opt/terrabits/caddy
+  - chown -R deploy:deploy /opt/terrabits
+
+final_message: |
+  TerraBits staging bootstrap completed.
+  Host: hermes-staging-01
+  Review cloud-init logs before disabling initial administrator access.
