@@ -13,7 +13,7 @@ done
 
 mapfile -d '' python_files < <(
   find "$repo_root" \
-    -type d \( -name .venv -o -name venv -o -name .git \) -prune \
+    -type d \( -name '.venv*' -o -name venv -o -name .git \) -prune \
     -o -type f -name '*.py' -print0
 )
 
