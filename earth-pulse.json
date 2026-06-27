@@ -1,10 +1,10 @@
 {
   "app_pulse": {
-    "frequency_hz": 0.039933383036153104,
-    "fresh": false,
-    "measured_at_utc": "2026-06-27T08:49:59.281191+00:00",
-    "period_s": 25.041705059014525,
-    "source": "last_good_measurement"
+    "frequency_hz": 0.03901379779138869,
+    "fresh": true,
+    "measured_at_utc": "2026-06-27T19:44:09.254623+00:00",
+    "period_s": 25.631957323076218,
+    "source": "current_measurement"
   },
   "breathing_rhythm": {
     "exhale_s": 13.0,
@@ -25,81 +25,81 @@
       ]
     ],
     "best_station": {
-      "code": "IU.ANMO",
+      "code": "II.SHEL",
       "detected": true,
       "error": null,
-      "frequency_hz": 0.038518518518518514,
-      "label": "Albuquerque, New Mexico",
-      "period_s": 25.961538461538463,
-      "snr": 3.1709466495795304
+      "frequency_hz": 0.03674540682414698,
+      "label": "St. Helena, South Atlantic",
+      "period_s": 27.214285714285715,
+      "snr": 6.877276272325875
     },
-    "confidence_label": "low (single station; confirm with a longer window)",
+    "confidence_label": "medium (multiple stations, some spread)",
     "detected": true,
-    "frequency_hz": 0.038518518518518514,
-    "measured_at_utc": "2026-06-27T14:06:34.577862+00:00",
-    "median_snr": 2.295593846056299,
-    "period_s": 25.961538461538463,
-    "quality_status": "weak_single_station",
+    "frequency_hz": 0.03901379779138869,
+    "measured_at_utc": "2026-06-27T19:44:09.254623+00:00",
+    "median_snr": 3.508256372488344,
+    "period_s": 25.631957323076218,
+    "quality_status": "confirmed",
     "snr_threshold": 3.0,
     "station_errors": 0,
     "stations": [
       {
         "code": "II.SHEL",
-        "detected": false,
+        "detected": true,
         "error": null,
-        "frequency_hz": 0.03800340328984685,
+        "frequency_hz": 0.03674540682414698,
         "label": "St. Helena, South Atlantic",
-        "period_s": 26.313432835820894,
-        "snr": 2.215714375101143
+        "period_s": 27.214285714285715,
+        "snr": 6.877276272325875
       },
       {
         "code": "II.ASCN",
         "detected": false,
         "error": null,
-        "frequency_hz": 0.038192474948005296,
+        "frequency_hz": 0.03672851192730026,
         "label": "Ascension Island, South Atlantic",
-        "period_s": 26.183168316831683,
-        "snr": 2.5091419411031723
+        "period_s": 27.226804123711343,
+        "snr": 1.3792536791826189
       },
       {
         "code": "II.BFO",
-        "detected": false,
+        "detected": true,
         "error": null,
-        "frequency_hz": 0.0381708238851096,
+        "frequency_hz": 0.03895370718855853,
         "label": "Black Forest, Germany",
-        "period_s": 26.198019801980195,
-        "snr": 2.3754733170114544
+        "period_s": 25.67149758454106,
+        "snr": 3.9809808026535416
       },
       {
         "code": "II.MBAR",
         "detected": false,
         "error": null,
-        "frequency_hz": 0.040185185185185185,
+        "frequency_hz": 0.036906528189910984,
         "label": "Mbarara, Uganda",
-        "period_s": 24.88479262672811,
-        "snr": 1.689747362796835
+        "period_s": 27.09547738693467,
+        "snr": 1.7022979867854666
       },
       {
         "code": "IU.TSUM",
-        "detected": false,
+        "detected": true,
         "error": null,
-        "frequency_hz": 0.03833333333333333,
+        "frequency_hz": 0.039074074074074074,
         "label": "Tsumeb, Namibia",
-        "period_s": 26.086956521739133,
-        "snr": 2.2125868565605873
+        "period_s": 25.592417061611375,
+        "snr": 3.190842429108757
       },
       {
         "code": "IU.ANMO",
         "detected": true,
         "error": null,
-        "frequency_hz": 0.038518518518518514,
+        "frequency_hz": 0.04037037037037037,
         "label": "Albuquerque, New Mexico",
-        "period_s": 25.961538461538463,
-        "snr": 3.1709466495795304
+        "period_s": 24.770642201834864,
+        "snr": 3.825670315867931
       }
     ],
     "stations_attempted": 6,
-    "stations_detected": 1,
+    "stations_detected": 4,
     "target_band_hz": [
       0.036,
       0.041
@@ -108,8 +108,8 @@
     "target_period_s": 26.0,
     "window_hours": 6.0
   },
-  "expires_at_utc": "2026-06-28T02:06:34.577888+00:00",
-  "generated_at_utc": "2026-06-27T14:06:34.577888+00:00",
+  "expires_at_utc": "2026-06-28T07:44:09.254646+00:00",
+  "generated_at_utc": "2026-06-27T19:44:09.254646+00:00",
   "history": [
     {
       "best_snr": 5.4645224771470735,
@@ -302,6 +302,18 @@
       "quality_status": "weak_single_station",
       "stations_attempted": 6,
       "stations_detected": 1
+    },
+    {
+      "best_snr": 6.877276272325875,
+      "best_station_code": "II.SHEL",
+      "detected": true,
+      "frequency_hz": 0.03901379779138869,
+      "measured_at_utc": "2026-06-27T19:44:09.254623+00:00",
+      "median_snr": 3.508256372488344,
+      "period_s": 25.631957323076218,
+      "quality_status": "confirmed",
+      "stations_attempted": 6,
+      "stations_detected": 4
     }
   ],
   "last_good_measurement": {
@@ -309,18 +321,18 @@
       "code": "II.SHEL",
       "detected": true,
       "error": null,
-      "frequency_hz": 0.040241828830530894,
+      "frequency_hz": 0.03674540682414698,
       "label": "St. Helena, South Atlantic",
-      "period_s": 24.84976525821596,
-      "snr": 10.231968065302906
+      "period_s": 27.214285714285715,
+      "snr": 6.877276272325875
     },
-    "confidence_label": "high (multiple stations, tight agreement)",
-    "frequency_hz": 0.039933383036153104,
-    "measured_at_utc": "2026-06-27T08:49:59.281191+00:00",
-    "median_snr": 2.4568579699379907,
-    "period_s": 25.041705059014525,
+    "confidence_label": "medium (multiple stations, some spread)",
+    "frequency_hz": 0.03901379779138869,
+    "measured_at_utc": "2026-06-27T19:44:09.254623+00:00",
+    "median_snr": 3.508256372488344,
+    "period_s": 25.631957323076218,
     "stations_attempted": 6,
-    "stations_detected": 2
+    "stations_detected": 4
   },
   "schema_version": "1.0.0"
 }
