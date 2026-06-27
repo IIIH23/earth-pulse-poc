@@ -1,9 +1,9 @@
 {
   "app_pulse": {
-    "frequency_hz": 0.04068733323497163,
+    "frequency_hz": 0.039933383036153104,
     "fresh": true,
-    "measured_at_utc": "2026-06-27T04:16:25.542759+00:00",
-    "period_s": 24.577673700680847,
+    "measured_at_utc": "2026-06-27T08:49:59.281191+00:00",
+    "period_s": 25.041705059014525,
     "source": "current_measurement"
   },
   "breathing_rhythm": {
@@ -25,20 +25,20 @@
       ]
     ],
     "best_station": {
-      "code": "IU.ANMO",
+      "code": "II.SHEL",
       "detected": true,
       "error": null,
-      "frequency_hz": 0.0409942496753849,
-      "label": "Albuquerque, New Mexico",
-      "period_s": 24.393665158371043,
-      "snr": 4.647825303071005
+      "frequency_hz": 0.040241828830530894,
+      "label": "St. Helena, South Atlantic",
+      "period_s": 24.84976525821596,
+      "snr": 10.231968065302906
     },
     "confidence_label": "high (multiple stations, tight agreement)",
     "detected": true,
-    "frequency_hz": 0.04068733323497163,
-    "measured_at_utc": "2026-06-27T04:16:25.542759+00:00",
-    "median_snr": 2.3643934020335404,
-    "period_s": 24.577673700680847,
+    "frequency_hz": 0.039933383036153104,
+    "measured_at_utc": "2026-06-27T08:49:59.281191+00:00",
+    "median_snr": 2.4568579699379907,
+    "period_s": 25.041705059014525,
     "quality_status": "confirmed",
     "snr_threshold": 3.0,
     "station_errors": 0,
@@ -47,55 +47,55 @@
         "code": "II.SHEL",
         "detected": true,
         "error": null,
-        "frequency_hz": 0.040384978297792036,
+        "frequency_hz": 0.040241828830530894,
         "label": "St. Helena, South Atlantic",
-        "period_s": 24.761682242990656,
-        "snr": 4.04996123209468
+        "period_s": 24.84976525821596,
+        "snr": 10.231968065302906
       },
       {
         "code": "II.ASCN",
         "detected": false,
         "error": null,
-        "frequency_hz": 0.036672967863894144,
+        "frequency_hz": 0.03846882698502937,
         "label": "Ascension Island, South Atlantic",
-        "period_s": 27.268041237113398,
-        "snr": 1.849489018695077
+        "period_s": 25.99507389162562,
+        "snr": 2.431130059936657
       },
       {
         "code": "II.BFO",
         "detected": false,
         "error": null,
-        "frequency_hz": 0.03692539562923888,
+        "frequency_hz": 0.03716847217033994,
         "label": "Black Forest, Germany",
-        "period_s": 27.081632653061227,
-        "snr": 2.2957989514869737
+        "period_s": 26.904522613065325,
+        "snr": 1.8461081601703029
       },
       {
         "code": "II.MBAR",
         "detected": false,
         "error": null,
-        "frequency_hz": 0.038272072754831375,
+        "frequency_hz": 0.03698169592827792,
         "label": "Mbarara, Uganda",
-        "period_s": 26.128712871287128,
-        "snr": 2.432987852580107
+        "period_s": 27.04040404040404,
+        "snr": 2.482585879939324
       },
       {
         "code": "IU.TSUM",
         "detected": false,
         "error": null,
-        "frequency_hz": 0.03833333333333333,
+        "frequency_hz": 0.03981481481481481,
         "label": "Tsumeb, Namibia",
-        "period_s": 26.086956521739133,
-        "snr": 1.236728645916344
+        "period_s": 25.116279069767444,
+        "snr": 1.6948891842634966
       },
       {
         "code": "IU.ANMO",
         "detected": true,
         "error": null,
-        "frequency_hz": 0.0409942496753849,
+        "frequency_hz": 0.039629629629629626,
         "label": "Albuquerque, New Mexico",
-        "period_s": 24.393665158371043,
-        "snr": 4.647825303071005
+        "period_s": 25.233644859813086,
+        "snr": 5.4572026838436525
       }
     ],
     "stations_attempted": 6,
@@ -108,8 +108,8 @@
     "target_period_s": 26.0,
     "window_hours": 6.0
   },
-  "expires_at_utc": "2026-06-27T16:16:25.542782+00:00",
-  "generated_at_utc": "2026-06-27T04:16:25.542782+00:00",
+  "expires_at_utc": "2026-06-27T20:49:59.281215+00:00",
+  "generated_at_utc": "2026-06-27T08:49:59.281215+00:00",
   "history": [
     {
       "best_snr": 5.4645224771470735,
@@ -278,23 +278,35 @@
       "quality_status": "confirmed",
       "stations_attempted": 6,
       "stations_detected": 2
+    },
+    {
+      "best_snr": 10.231968065302906,
+      "best_station_code": "II.SHEL",
+      "detected": true,
+      "frequency_hz": 0.039933383036153104,
+      "measured_at_utc": "2026-06-27T08:49:59.281191+00:00",
+      "median_snr": 2.4568579699379907,
+      "period_s": 25.041705059014525,
+      "quality_status": "confirmed",
+      "stations_attempted": 6,
+      "stations_detected": 2
     }
   ],
   "last_good_measurement": {
     "best_station": {
-      "code": "IU.ANMO",
+      "code": "II.SHEL",
       "detected": true,
       "error": null,
-      "frequency_hz": 0.0409942496753849,
-      "label": "Albuquerque, New Mexico",
-      "period_s": 24.393665158371043,
-      "snr": 4.647825303071005
+      "frequency_hz": 0.040241828830530894,
+      "label": "St. Helena, South Atlantic",
+      "period_s": 24.84976525821596,
+      "snr": 10.231968065302906
     },
     "confidence_label": "high (multiple stations, tight agreement)",
-    "frequency_hz": 0.04068733323497163,
-    "measured_at_utc": "2026-06-27T04:16:25.542759+00:00",
-    "median_snr": 2.3643934020335404,
-    "period_s": 24.577673700680847,
+    "frequency_hz": 0.039933383036153104,
+    "measured_at_utc": "2026-06-27T08:49:59.281191+00:00",
+    "median_snr": 2.4568579699379907,
+    "period_s": 25.041705059014525,
     "stations_attempted": 6,
     "stations_detected": 2
   },
