@@ -88,3 +88,7 @@ Pulse of Earth is a research and software project for collecting, processing, an
 13. n8n deterministic workflows
 14. Staging environment
 15. Production deployment approval
+
+## Recent updates (autopilot)
+
+- 2026-06-27T06:39:54Z: Wired tools/inventory.py into the CI smoke workflow so the inventory script is exercised in CI; local smoke tests passed.

@@ -74,3 +74,11 @@
 - Commit: 13a7e7a47da3011d2c34faafeac603d3f6cbf588
 - Tests: smoke_test.sh and tests/test_inventory.sh  PASSED
 - Next: Wire tools/inventory.py into CI and add dependency locking in a follow-up cycle.
+
+## 2026-06-27T06:39:54Z
+
+- Action: Wired tools/inventory.py into CI smoke workflow by adding an inventory execution step to .github/workflows/smoke.yml.
+- Tests: Ran tools/inventory.py and tests/smoke_test.sh locally — PASSED.
+- Files changed: .github/workflows/smoke.yml, audit/FILE_INVENTORY.md, AUTOPILOT_STATE.md, ROADMAP.md (if updated).
+- Next: Add focused CI tests and dependency locking in a follow-up cycle.
+- Commit: will be created locally in this cycle.

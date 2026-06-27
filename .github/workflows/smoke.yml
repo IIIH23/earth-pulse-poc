@@ -14,4 +14,5 @@ jobs:
         with:
           python-version: '3.11'
       - run: chmod +x tests/smoke_test.sh
+      - run: python3 tools/inventory.py > audit/FILE_INVENTORY.md
       - run: tests/smoke_test.sh
