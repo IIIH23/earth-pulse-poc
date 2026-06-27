@@ -1,4 +1,41 @@
 {
+  "lean-dev": [
+    "cost-policy",
+    "codex"
+  ],
+  "architecture-core": [
+    "requesting-code-review",
+    "systematic-debugging",
+    "simplify-code",
+    "autopilot-verification"
+  ],
+  "python-core": [
+    "python-debugpy",
+    "test-driven-development",
+    "python-testing-patterns",
+    "improve-codebase-architecture"
+  ],
+  "devops-core": [
+    "autopilot-manager",
+    "autopilot-verification",
+    "github-auth",
+    "github-pr-workflow",
+    "github-repo-management"
+  ],
+  "research-core": [
+    "arxiv",
+    "blogwatcher",
+    "llm-wiki",
+    "ocr-and-documents",
+    "youtube-content"
+  ],
+  "design-core": [
+    "claude-design",
+    "popular-web-designs",
+    "design-md",
+    "excalidraw",
+    "architecture-diagram"
+  ],
   "dev-core": [
     "codex",
     "codebase-inspection",
@@ -8,29 +45,5 @@
     "test-driven-development",
     "plan",
     "simplify-code"
-  ],
-  "devops-core": [
-    "autopilot-manager",
-    "autopilot-verification",
-    "github-auth",
-    "github-pr-workflow",
-    "codebase-inspection",
-    "huggingface-hub"
-  ],
-  "design-core": [
-    "claude-design",
-    "popular-web-designs",
-    "design-md",
-    "excalidraw",
-    "architecture-diagram",
-    "sketch"
-  ],
-  "research-core": [
-    "arxiv",
-    "blogwatcher",
-    "llm-wiki",
-    "research-paper-writing",
-    "ocr-and-documents",
-    "youtube-content"
   ]
 }

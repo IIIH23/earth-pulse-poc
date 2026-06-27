@@ -126,9 +126,39 @@
 - незворотна дія;
 - рішення власника про архітектуру.
 
+## Approval boundaries (ORCHESTRATOR_POLICY.md §23)
+
+Зупинись і запитай approval для:
+- secrets, API tokens, credentials;
+- Hetzner resources;
+- Cloudflare changes;
+- DNS changes;
+- firewall changes;
+- GitHub admin settings;
+- production deploy;
+- database migration;
+- deletion;
+- repository publication;
+- paid API/provider;
+- production backup restore;
+- credential rotation;
+- medium/high-risk merge;
+- Terraform apply.
+
+Не запитуй approval для:
+- read, git status, local tests, docs, feature-branch commits.
+
+## Runtime budget (per cycle)
+
+- Exactly one small completed task per run.
+- Max 12 tool actions.
+- Stop after one tested local commit.
+- Keep Telegram report below 200 words.
+- Do not perform full audits unless explicitly scheduled.
+
 ## Final Telegram report
 
-Не більше 300 слів:
+Не більше 200 слів:
 
 - задача;
 - worker;

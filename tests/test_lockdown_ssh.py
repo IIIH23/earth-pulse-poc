@@ -1,13 +1,8 @@
 """Remote tests for the staging SSH lockdown."""
 
 import os
-import shlex
+import subprocess
 import unittest
-
-try:
-    import paramiko
-except ImportError:
-    paramiko = None
 
 
 HOST = "157.180.125.174"
@@ -16,41 +11,28 @@ DEPLOY_KEY_PATH = os.path.expanduser("~/.ssh/deploy_staging_ed25519")
 COMMAND_TIMEOUT_SECONDS = 30
 
 
-def connect(username: str, key_path: str):
-    """Create an SSH connection using only the explicitly supplied key."""
-    client = paramiko.SSHClient()
-    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect(
-        hostname=HOST,
-        username=username,
-        key_filename=key_path,
-        timeout=COMMAND_TIMEOUT_SECONDS,
-        banner_timeout=COMMAND_TIMEOUT_SECONDS,
-        auth_timeout=COMMAND_TIMEOUT_SECONDS,
-        allow_agent=False,
-        look_for_keys=False,
-    )
-    return client
+def run_ssh_command(command: str, username: str, key_path: str) -> tuple[int, str, str]:
+    """Run a command via SSH subprocess. Returns (exit_code, stdout, stderr)."""
+    try:
+        r = subprocess.run(
+            [
+                "ssh",
+                "-i", key_path,
+                "-o", "StrictHostKeyChecking=accept-new",
+                "-o", f"ConnectTimeout={COMMAND_TIMEOUT_SECONDS}",
+                "-o", "BatchMode=yes",
+                f"{username}@{HOST}",
+                command,
+            ],
+            capture_output=True,
+            text=True,
+            timeout=COMMAND_TIMEOUT_SECONDS + 5,
+        )
+        return r.returncode, r.stdout, r.stderr
+    except Exception as exc:
+        return 1, "", str(exc)
 
 
-def run_remote(client, command: str) -> tuple[int, str, str]:
-    """Run a command and return its exit code, stdout, and stderr."""
-    _stdin, stdout, stderr = client.exec_command(
-        command,
-        timeout=COMMAND_TIMEOUT_SECONDS,
-    )
-    exit_code = stdout.channel.recv_exit_status()
-    return (
-        exit_code,
-        stdout.read().decode("utf-8", errors="replace"),
-        stderr.read().decode("utf-8", errors="replace"),
-    )
-
-
-@unittest.skipUnless(
-    paramiko is not None,
-    "paramiko is not installed; skipping staging SSH lockdown tests",
-)
 class RootSessionLockdownTests(unittest.TestCase):
     """Checks that require an existing root administration session."""
 
@@ -58,21 +40,14 @@ class RootSessionLockdownTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         if not os.path.isfile(ROOT_KEY_PATH):
             raise unittest.SkipTest(f"root SSH key is missing: {ROOT_KEY_PATH}")
-
-        try:
-            cls.ssh = connect("root", ROOT_KEY_PATH)
-        except Exception as exc:
+        code, out, err = run_ssh_command("echo connectivity_test", "root", ROOT_KEY_PATH)
+        if code != 0:
             raise unittest.SkipTest(
-                "root SSH is unavailable; configuration checks require an "
-                f"existing administration session ({exc})"
-            ) from exc
-
-    @classmethod
-    def tearDownClass(cls) -> None:
-        cls.ssh.close()
+                f"root SSH unavailable: {err.strip()}"
+            )
 
     def assert_remote_success(self, command: str) -> tuple[str, str]:
-        exit_code, stdout, stderr = run_remote(self.ssh, command)
+        exit_code, stdout, stderr = run_ssh_command(command, "root", ROOT_KEY_PATH)
         self.assertEqual(
             exit_code,
             0,
@@ -83,35 +58,23 @@ class RootSessionLockdownTests(unittest.TestCase):
         )
         return stdout, stderr
 
-    def assert_config_line(self, directive: str, value: str) -> None:
-        pattern = (
-            rf"^[[:space:]]*{directive}[[:space:]]+{value}"
-            r"([[:space:]]*(#.*)?)?$"
-        )
-        command = (
-            "grep -RhsE "
-            f"{shlex.quote(pattern)} "
-            "/etc/ssh/sshd_config /etc/ssh/sshd_config.d"
-        )
+    def assert_config_directive(self, directive: str, expected: str) -> None:
+        """Check that a directive is set to expected value in sshd config."""
+        command = f"grep -r '^{directive} ' /etc/ssh/sshd_config /etc/ssh/sshd_config.d/"
         stdout, _ = self.assert_remote_success(command)
-        self.assertTrue(
-            stdout.strip(),
-            f"Expected {directive} {value} in the SSH configuration",
-        )
+        self.assertIn(expected, stdout.splitlines()[0].split()[1:],
+                       msg=f"Expected {directive} {expected}, got: {stdout}")
 
     def test_sshd_config_valid(self) -> None:
         self.assert_remote_success("sshd -t")
 
     def test_permit_root_login_no(self) -> None:
-        self.assert_config_line("PermitRootLogin", "no")
+        self.assert_config_directive("PermitRootLogin", "no")
 
     def test_password_auth_no(self) -> None:
-        self.assert_config_line("PasswordAuthentication", "no")
+        self.assert_config_directive("PasswordAuthentication", "no")
 
-@unittest.skipUnless(
-    paramiko is not None,
-    "paramiko is not installed; skipping staging SSH lockdown tests",
-)
+
 class DeploySessionLockdownTests(unittest.TestCase):
     """Checks performed through the deploy account."""
 
@@ -119,18 +82,14 @@ class DeploySessionLockdownTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         if not os.path.isfile(DEPLOY_KEY_PATH):
             raise unittest.SkipTest(f"deploy SSH key is missing: {DEPLOY_KEY_PATH}")
-
-        try:
-            cls.ssh = connect("deploy", DEPLOY_KEY_PATH)
-        except Exception as exc:
-            raise unittest.SkipTest(f"deploy SSH is unavailable: {exc}") from exc
-
-    @classmethod
-    def tearDownClass(cls) -> None:
-        cls.ssh.close()
+        code, out, err = run_ssh_command("echo connectivity_test", "deploy", DEPLOY_KEY_PATH)
+        if code != 0:
+            raise unittest.SkipTest(
+                f"deploy SSH unavailable: {err.strip()}"
+            )
 
     def assert_remote_success(self, command: str) -> tuple[str, str]:
-        exit_code, stdout, stderr = run_remote(self.ssh, command)
+        exit_code, stdout, stderr = run_ssh_command(command, "deploy", DEPLOY_KEY_PATH)
         self.assertEqual(
             exit_code,
             0,
@@ -146,18 +105,17 @@ class DeploySessionLockdownTests(unittest.TestCase):
         self.assertIn("deploy", stdout)
 
     def test_root_ssh_rejected(self) -> None:
-        command = r"""
-tmpdir=$(mktemp -d)
-trap 'rm -rf "$tmpdir"' EXIT
-ssh-keygen -q -t ed25519 -N '' -f "$tmpdir/bogus" ||
-  exit 2
-ssh -o BatchMode=yes -o ConnectTimeout=5 \
-  -o IdentitiesOnly=yes -o StrictHostKeyChecking=no \
-  -o UserKnownHostsFile=/dev/null -i "$tmpdir/bogus" \
-  root@127.0.0.1 whoami
-test "$?" -ne 0
-"""
-        self.assert_remote_success(command)
+        """Verify root SSH is rejected by attempting with a bogus key."""
+        # Generate a bogus key and try to connect as root
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bogus_key = os.path.join(tmpdir, "bogus")
+            subprocess.run(
+                ["ssh-keygen", "-q", "-t", "ed25519", "-N", "", "-f", bogus_key],
+                check=True, capture_output=True
+            )
+            code, _, _ = run_ssh_command("whoami", "root", bogus_key)
+            self.assertNotEqual(code, 0, "Bogus key should not authenticate as root")
 
     def test_dropin_file_exists(self) -> None:
         self.assert_remote_success(
@@ -166,7 +124,6 @@ test "$?" -ne 0
 
     def test_deploy_docker_access(self) -> None:
         self.assert_remote_success("docker ps")
-
 
 if __name__ == "__main__":
     unittest.main()

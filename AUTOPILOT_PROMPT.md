@@ -35,6 +35,28 @@
 - зовнішнє API-використання;
 - наступний крок.
 
+## Approval boundaries (ORCHESTRATOR_POLICY.md §23)
+
+Зупинись і запитай approval для:
+- secrets, API tokens, credentials;
+- Hetzner resources;
+- Cloudflare changes;
+- DNS changes;
+- firewall changes;
+- GitHub admin settings;
+- production deploy;
+- database migration;
+- deletion;
+- repository publication;
+- paid API/provider;
+- production backup restore;
+- credential rotation;
+- medium/high-risk merge;
+- Terraform apply.
+
+Не запитуй approval для:
+- read, git status, local tests, docs, feature-branch commits.
+
 ## Concurrency and duplicate prevention
 
 - Before doing work, inspect `AUTOPILOT_STATE.md` and recent Git commits.
