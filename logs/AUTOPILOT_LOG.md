@@ -101,3 +101,13 @@
 - Tests: tests/test_healthcheck.py — 10 PASSED; tests/test_inventory_pytest.py — 1 PASSED; tests/smoke_test.sh — PASSED.
 - Commit: dea410f
 - Next: Wire tools/healthcheck.py into .github/workflows/smoke.yml and identify next tool in porting queue.
+
+## 2026-06-28T03:20:00Z
+
+- Action: Autopilot cycle 5 — added tools/telegram_notify.py (ported from scripts/send-telegram-alert.sh).
+- Worker: Codex CLI (sandbox: workspace-write) implemented the tool; Hermes added disable_web_page_preview param and reviewed.
+- Files created: tools/telegram_notify.py (167 lines, stdlib-only), tests/test_telegram_notify.py (202 lines, 12 tests).
+- Also updated: docs/PORTING_FIRST_SOURCE.md (added spec for telegram_notify).
+- Tests: tests/test_telegram_notify.py — 12 PASSED; full suite (inventory + healthcheck + telegram) — 23 PASSED.
+- Commit: bd2d383
+- Next: Wire tools/healthcheck.py into CI workflow and plan porting for scripts/rollback.sh.

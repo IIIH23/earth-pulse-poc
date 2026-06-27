@@ -21,6 +21,7 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - New progress (2026-06-27T03:55:33Z): Implemented tools/inventory.py (stdlib-only CLI) and tests/test_inventory.sh (fixture-based smoke test). Ran tests: inventory test and repository smoke test — PASSED.
 - Next actionable task: Wire the script into .github/workflows/smoke.yml so the inventory runs in CI and continue adding focused tests.
 - New progress (2026-06-28T03:10:00Z): Added tools/healthcheck.py (ported from scripts/check-health.sh) — stdlib-only Python CLI with --json, --verbose, --exit-zero flags. 10 pytest tests added and passing. Commit dea410f.
+- New progress (2026-06-28T03:20:00Z): Added tools/telegram_notify.py (ported from scripts/send-telegram-alert.sh) — stdlib-only CLI with --severity, --message, --details, --dry-run, --config. Secure token redaction in error output. 12 pytest tests passing. Commit bd2d383.
 - New progress (2026-06-28T03:00:00Z): Fixed smoke_test.sh hang — find command now excludes all .venv* directories (was compiling 836 pip package files). Smoke test now completes in <1s.
 
 ## 3. Hermes-Obsidian
