@@ -142,6 +142,17 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     try:
         token, chat_id, env_name = load_configuration(args.config)
+    except (ValueError, OSError) as error:
+        if not args.dry_run:
+            print(f"telegram_notify: {error}", file=sys.stderr)
+            _print_json({"error": str(error)})
+            return 1
+
+        env_name = "production"
+        token = "dry-run-dummy"
+        chat_id = "dry-run-dummy"
+
+    try:
         message = build_message(args.severity, args.message, env_name, args.details)
 
         if args.dry_run:
