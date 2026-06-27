@@ -93,10 +93,11 @@
 - Files changed: tests/test_inventory_pytest.py, AUTOPILOT_STATE.md, ROADMAP.md, logs/AUTOPILOT_LOG.md
 - Next: prepare CI wiring for focused tests and a reproducible verifier script for CI/human runs.
 
-## 2026-06-28T03:00:00Z
+## 2026-06-28T03:10:00Z
 
-- Action: Autopilot cycle 3 — fixed smoke_test.sh hang by updating find command to exclude all .venv* directories (was matching only .venv, leaving .venv_autopilot unpruned → 836 files compiled → timeout).
-- Tests: tests/smoke_test.sh — PASSED (4 files compiled in <1s); tests/test_inventory_pytest.py — PASSED; tests/test_inventory.sh — PASSED.
-- Commit: 6c7a3fe
-- Files changed: tests/smoke_test.sh
-- Next: Identify and implement next tool in the porting queue (tools/ or audit/ scripts).
+- Action: Autopilot cycle 4 — added tools/healthcheck.py (ported from scripts/check-health.sh).
+- Worker: Codex CLI (sandbox: workspace-write) implemented the tool; Hermes fixed test imports and verified.
+- Files created: tools/healthcheck.py (211 lines, stdlib-only), tests/test_healthcheck.py (179 lines, 10 tests).
+- Tests: tests/test_healthcheck.py — 10 PASSED; tests/test_inventory_pytest.py — 1 PASSED; tests/smoke_test.sh — PASSED.
+- Commit: dea410f
+- Next: Wire tools/healthcheck.py into .github/workflows/smoke.yml and identify next tool in porting queue.

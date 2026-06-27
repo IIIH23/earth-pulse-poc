@@ -20,6 +20,7 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Recent update: Selected the audit/file-inventory generator (audit/FILE_INVENTORY.md) as the first logic source to port. A specification has been recorded at docs/PORTING_FIRST_SOURCE.md describing inputs, outputs, and minimal CLI surface.
 - New progress (2026-06-27T03:55:33Z): Implemented tools/inventory.py (stdlib-only CLI) and tests/test_inventory.sh (fixture-based smoke test). Ran tests: inventory test and repository smoke test — PASSED.
 - Next actionable task: Wire the script into .github/workflows/smoke.yml so the inventory runs in CI and continue adding focused tests.
+- New progress (2026-06-28T03:10:00Z): Added tools/healthcheck.py (ported from scripts/check-health.sh) — stdlib-only Python CLI with --json, --verbose, --exit-zero flags. 10 pytest tests added and passing. Commit dea410f.
 - New progress (2026-06-28T03:00:00Z): Fixed smoke_test.sh hang — find command now excludes all .venv* directories (was compiling 836 pip package files). Smoke test now completes in <1s.
 
 ## 3. Hermes-Obsidian
@@ -103,6 +104,7 @@ Pulse of Earth is a research and software project for collecting, processing, an
 
 - 2026-06-27T19:57:00Z: Staging bootstrap executed on hermes-staging-01 (157.180.125.174). Bootstrap completed, 13 SSH smoke tests passed. Commits 628fdfe, 004abec on feat/staging-bootstrap.
 - 2026-06-27T19:51:00Z: Paused cron pulse-autopilot (job dd25d4fecd66) due to repeated error status.
+- 2026-06-28T03:10:00Z: Added tools/healthcheck.py (ported from scripts/check-health.sh) — stdlib-only Python CLI with --json, --verbose, --exit-zero flags. 10 pytest tests added and passing. Commit dea410f.
 - 2026-06-28T03:00:00Z: Fixed smoke_test.sh hang — find command now excludes all .venv* directories. Previously compiled 836 pip package files causing timeout. Now compiles 4 project files in <1s. Commit 6c7a3fe.
 - 2026-06-27T08:43:43Z: Added focused pytest for tools/inventory.py (commit cdc8b63).
 - 2026-06-27T06:39:54Z: Wired tools/inventory.py into CI smoke workflow (commit 51f5719).
