@@ -14,3 +14,6 @@ secrets/
 credentials/
 
 .autopilot.lock
+
+# Local Python environments
+.venv_autopilot/
