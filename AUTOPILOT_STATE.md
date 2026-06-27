@@ -2,7 +2,7 @@
 
 - Current autopilot role: Coordinate repository setup and maintain lightweight project operating records.
 - Current cycle number: 7
-- Task in progress: Record specification for the first logic source to port (audit/file-inventory generator)
-- Last action: Recorded porting specification at docs/PORTING_FIRST_SOURCE.md; updated ROADMAP.md and logs/AUTOPILOT_LOG.md. Ran smoke tests (bash tests/smoke_test.sh) — PASSED.
+- Task in progress: Implement tools/inventory.py to generate audit/FILE_INVENTORY.md (completed)
+- Last action: Implemented tools/inventory.py and added tests/test_inventory.sh; ran tests (inventory test and smoke test) — PASSED. Files created: tools/inventory.py, tests/test_inventory.sh.
 - Blocker: none detected in this environment (`.git` is writable).
-- Next action: Implement a minimal tools/inventory.py script to generate audit/FILE_INVENTORY.md (follow-up autopilot task).
+- Next action: Wire tools/inventory.py into .github/workflows/smoke.yml to run in CI; add additional focused tests and CI checks.

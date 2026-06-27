@@ -18,6 +18,8 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Estimated effort: M
 - Next actionable task: Identify the first logic source to port and record its expected inputs and outputs.
 - Recent update: Selected the audit/file-inventory generator (audit/FILE_INVENTORY.md) as the first logic source to port. A specification has been recorded at docs/PORTING_FIRST_SOURCE.md describing inputs, outputs, and minimal CLI surface.
+- New progress (2026-06-27T03:55:33Z): Implemented tools/inventory.py (stdlib-only CLI) and tests/test_inventory.sh (fixture-based smoke test). Ran tests: inventory test and repository smoke test — PASSED.
+- Next actionable task: Wire the script into .github/workflows/smoke.yml so the inventory runs in CI and continue adding focused tests.
 
 ## 3. Hermes-Obsidian
 
