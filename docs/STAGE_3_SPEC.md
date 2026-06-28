@@ -1,7 +1,7 @@
 # Stage 3 — Hermes-Obsidian Sync Specification
 
 > Created: 2026-06-28T13:30:00Z
-> Status: DRAFT — ready for owner review
+> Status: IMPLEMENTED — sync tool done, docs/obsidian/ output generated, autopilot wiring documented
 
 ## Scope
 
@@ -52,16 +52,27 @@ docs/obsidian/
 - ADRs: `ADR-001-use-git-sync.md`, `ADR-002-one-way-sync.md`, etc.
 - All files are valid Obsidian Markdown (YAML frontmatter optional).
 
-## Sync Script (planned for Stage 3 implementation)
+## Sync Script (IMPLEMENTED)
 
-A future `tools/obsidian_sync.py` will:
+`tools/obsidian_sync.py` is implemented and tested (10 pytest tests, all passing).
+
+It performs:
 
 1. Read canonical state files from repo root (`AUTOPILOT_STATE.md`, `ROADMAP.md`).
-2. Read today's log entry from `logs/AUTOPILOT_LOG.md`.
-3. Write/update corresponding files in `docs/obsidian/`.
-4. Run `git add docs/obsidian/ && git commit -m "obsidian sync: <timestamp>"`.
+2. Read today's log entry from `logs/AUTOPILOT_LOG.md` (extracts all sections from the latest UTC date).
+3. Write/update corresponding files in `docs/obsidian/` (STATE.md, ROADMAP.md, LOG-YYYY-MM-DD.md).
+4. Idempotent: skips writes when content unchanged (reports "unchanged").
+5. Supports `--dry-run` and `--vault-path <path>` flags.
 
-This script is NOT yet implemented — it is the first deliverable of Stage 3.
+### Autopilot wiring
+
+After each autopilot cycle updates ROADMAP.md, AUTOPILOT_STATE.md, or AUTOPILOT_LOG.md, run:
+
+```bash
+python3 tools/obsidian_sync.py
+```
+
+This regenerates `docs/obsidian/` before the cycle commits. The autopilot then commits both the state changes and the synced obsidian output in the same commit.
 
 ## Owner Actions Required
 
