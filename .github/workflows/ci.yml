@@ -146,3 +146,4 @@ jobs:
         run: |
           sleep 10
           curl -f https://earthbit.staging.terrabits.org/health || exit 1
+# trigger CI
