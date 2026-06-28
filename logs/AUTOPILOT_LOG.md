@@ -1,5 +1,14 @@
 # Autopilot Log
 
+## 2026-06-28T19:56:00Z — Cycle 13
+
+- **Action**: Stage 4 (Hermes-Linear) — implemented Linear sync tool and specification.
+- **Worker**: Codex CLI (sandbox: workspace-write) implemented the tool; Hermes reviewed, ran tests, committed.
+- **Files created**: docs/STAGE_4_SPEC.md (195 lines, GraphQL operations + field mapping + idempotency), tools/linear_sync.py (486 lines, stdlib-only CLI), tests/test_linear_sync.py (166 lines, 8 tests).
+- **Tests**: tests/test_linear_sync.py — 8 PASSED; full suite — 70 PASSED, 3 skipped.
+- **Commit**: 1bee3d9
+- **Next**: Advance to Stage 5 (n8n Workflows) — choose one workflow candidate and write its trigger/spec.
+
 ## 2026-06-28T17:45:00Z — Cycle 12
 
 - **Action**: Stage 3 (Hermes-Obsidian) complete — ran obsidian_sync.py to generate initial docs/obsidian/ output; documented autopilot wiring.

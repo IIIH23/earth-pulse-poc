@@ -34,9 +34,12 @@ Pulse of Earth is a research and software project for collecting, processing, an
 ## 4. Hermes-Linear
 
 - Objectives: Define how Hermes coordinates planning and task tracking with Linear.
-- Success criteria: Project labels, issue lifecycle, and update cadence are documented.
+- Success criteria: Project labels, issue lifecycle, and update cadence are documented. Sync tool implemented.
 - Estimated effort: M
-- Next actionable task: Draft the Linear issue fields needed for Pulse of Earth work.
+- Status: ✅ done
+- Completion summary: docs/STAGE_4_SPEC.md (GraphQL operations, field mapping, idempotency strategy)
+- Progress: Sync spec drafted at docs/STAGE_4_SPEC.md (GraphQL queries/mutations, ROADMAP→Linear field mapping, idempotency via external ID markers). Commit 1bee3d9. Sync tool implemented: tools/linear_sync.py with 8 tests. Dry-run mode validates local parsing without API calls.
+- Next actionable task: Stage 5 (n8n Workflows) — choose one workflow candidate and write its trigger and expected output.
 
 ## 5. Deterministic Workflows With n8n
 
