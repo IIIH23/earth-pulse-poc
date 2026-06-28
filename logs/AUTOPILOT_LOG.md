@@ -130,3 +130,14 @@
 - Tests: tests/test_telegram_notify.py — 12 PASSED; full suite (inventory + healthcheck + telegram) — 23 PASSED.
 - Commit: bd2d383
 - Next: Wire tools/healthcheck.py into CI workflow and plan porting for scripts/rollback.sh.
+
+## 2026-06-28T06:45:00Z — Cycle 8
+
+- **Action**: Refactored scripts/rollback.sh and scripts/send-telegram-alert.sh to delegate to Python backends
+- **Worker**: Codex CLI (background, PTY)
+- **Changes**:
+  - scripts/rollback.sh: removed inline bash logic (docker compose pull/up, health check, state saving), replaced with `exec python3 tools/rollback.py` with --state-dir, --compose-file, --log-file flags
+  - scripts/send-telegram-alert.sh: removed inline curl/payload logic, replaced with `exec python3 tools/telegram_notify.py` with --severity, --message, --details flags
+- **Tests**: 35 passed, 20 skipped (SSH smoke tests require staging host)
+- **Commit**: 95814c7
+- **Notes**: All 4 operational shell scripts (check-health.sh, rollback.sh, send-telegram-alert.sh) now delegate to Python modules under tools/. Remaining shell scripts (bootstrap-staging.sh, lockdown-staging-ssh.sh, verify-staging-ssh.sh, verify-staging.sh) are VPS-specific provisioning scripts — not candidates for Python porting.
