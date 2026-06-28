@@ -1,5 +1,18 @@
 # Autopilot Log
 
+## 2026-06-28T13:30:00Z — Cycle 10
+
+- **Action**: Stage 2 confirmed complete (52 tests, all 4 tools done). Advanced to Stage 3 (Hermes-Obsidian) — wrote sync specification.
+- **Worker**: Hermes (GPT-5 mini) — planning and doc-only change, no coding required.
+- **Changes**:
+  - `docs/STAGE_3_SPEC.md`: new — defines one-way Git→Obsidian sync, conflict behavior, note naming convention, planned `tools/obsidian_sync.py`.
+  - `AUTOPILOT_STATE.md`: updated cycle to 10, task to Stage 3.
+  - `ROADMAP.md`: Stage 3 marked 🔄 in progress with progress note and next action.
+- **Tests**: 52 passed, 3 skipped (unchanged — doc-only change).
+- **Commit**: 38f08e1
+- **Notes**: Stage 2 (Port Logic) is fully complete. Stage 3 spec is drafted. Next concrete deliverable is `tools/obsidian_sync.py`.
+- **Next**: Implement tools/obsidian_sync.py (stdlib-only Python CLI).
+
 ## 2026-06-28T07:00:00Z — Cycle 9
 
 - **Action**: Stage 2 completion — wired tools/rollback.py into CI smoke workflow, created docs/STAGE_2_COMPLETION.md

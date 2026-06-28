@@ -1,7 +1,7 @@
 # Autopilot State
 
 - Current autopilot role: Coordinate repository setup and maintain lightweight project operating records.
-- Current cycle number: 9
-- Task in progress: Stage 2 — Port Logic (COMPLETE). Moving to Stage 3 — Hermes-Obsidian.
-- Last action: Added tools/rollback.py to CI smoke workflow and created docs/STAGE_2_COMPLETION.md with final porting decision. All 52 tests passing. Commit 035820c.
-- Next action: Begin Stage 3 — draft Obsidian vault structure and note naming convention.
+- Current cycle number: 10
+- Task in progress: Stage 3 — Hermes-Obsidian (SYNC SPEC drafted). Implementation of tools/obsidian_sync.py is next.
+- Last action: Committed docs/STAGE_3_SPEC.md defining one-way Git→Obsidian sync, conflict behavior, note naming convention. Commit 38f08e1.
+- Next action: Implement tools/obsidian_sync.py (stdlib-only Python CLI that mirrors canonical state files into docs/obsidian/).
