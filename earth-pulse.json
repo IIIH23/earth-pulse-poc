@@ -1,10 +1,10 @@
 {
   "app_pulse": {
-    "frequency_hz": 0.03901379779138869,
-    "fresh": false,
-    "measured_at_utc": "2026-06-27T19:44:09.254623+00:00",
-    "period_s": 25.631957323076218,
-    "source": "last_good_measurement"
+    "frequency_hz": 0.039629629629629626,
+    "fresh": true,
+    "measured_at_utc": "2026-06-28T19:46:16.639679+00:00",
+    "period_s": 25.233644859813086,
+    "source": "current_measurement"
   },
   "breathing_rhythm": {
     "exhale_s": 13.0,
@@ -28,18 +28,18 @@
       "code": "II.BFO",
       "detected": true,
       "error": null,
-      "frequency_hz": 0.03792452830188679,
+      "frequency_hz": 0.040284804197114485,
       "label": "Black Forest, Germany",
-      "period_s": 26.3681592039801,
-      "snr": 4.691152433751424
+      "period_s": 24.823255813953487,
+      "snr": 4.895564608327046
     },
-    "confidence_label": "low (single station; confirm with a longer window)",
+    "confidence_label": "high (multiple stations, tight agreement)",
     "detected": true,
-    "frequency_hz": 0.03792452830188679,
-    "measured_at_utc": "2026-06-28T14:16:01.752518+00:00",
-    "median_snr": 2.2349654063361593,
-    "period_s": 26.3681592039801,
-    "quality_status": "weak_single_station",
+    "frequency_hz": 0.039629629629629626,
+    "measured_at_utc": "2026-06-28T19:46:16.639679+00:00",
+    "median_snr": 2.850617257118496,
+    "period_s": 25.233644859813086,
+    "quality_status": "confirmed",
     "snr_threshold": 3.0,
     "station_errors": 0,
     "stations": [
@@ -47,59 +47,59 @@
         "code": "II.SHEL",
         "detected": false,
         "error": null,
-        "frequency_hz": 0.03872567722243419,
+        "frequency_hz": 0.03800340328984685,
         "label": "St. Helena, South Atlantic",
-        "period_s": 25.822660098522164,
-        "snr": 1.797626024900134
+        "period_s": 26.313432835820894,
+        "snr": 2.385045844420347
       },
       {
         "code": "II.ASCN",
         "detected": false,
         "error": null,
-        "frequency_hz": 0.038717024103245394,
+        "frequency_hz": 0.03660849772382398,
         "label": "Ascension Island, South Atlantic",
-        "period_s": 25.828431372549023,
-        "snr": 2.8444490111195333
+        "period_s": 27.3160621761658,
+        "snr": 2.062764061845564
       },
       {
         "code": "II.BFO",
         "detected": true,
         "error": null,
-        "frequency_hz": 0.03792452830188679,
+        "frequency_hz": 0.040284804197114485,
         "label": "Black Forest, Germany",
-        "period_s": 26.3681592039801,
-        "snr": 4.691152433751424
+        "period_s": 24.823255813953487,
+        "snr": 4.895564608327046
       },
       {
         "code": "II.MBAR",
         "detected": false,
         "error": null,
-        "frequency_hz": 0.037162162162162164,
+        "frequency_hz": 0.036504634007944015,
         "label": "Mbarara, Uganda",
-        "period_s": 26.909090909090907,
-        "snr": 1.7359336861509422
+        "period_s": 27.393782383419687,
+        "snr": 2.4948929489173963
       },
       {
         "code": "IU.TSUM",
-        "detected": false,
+        "detected": true,
         "error": null,
-        "frequency_hz": 0.04055555555555555,
+        "frequency_hz": 0.038518518518518514,
         "label": "Tsumeb, Namibia",
-        "period_s": 24.657534246575345,
-        "snr": 1.448759997002309
+        "period_s": 25.961538461538463,
+        "snr": 3.206341565319596
       },
       {
         "code": "IU.ANMO",
-        "detected": false,
+        "detected": true,
         "error": null,
-        "frequency_hz": 0.03685185185185185,
+        "frequency_hz": 0.039629629629629626,
         "label": "Albuquerque, New Mexico",
-        "period_s": 27.1356783919598,
-        "snr": 2.672304787772185
+        "period_s": 25.233644859813086,
+        "snr": 3.5310283741814743
       }
     ],
     "stations_attempted": 6,
-    "stations_detected": 1,
+    "stations_detected": 3,
     "target_band_hz": [
       0.036,
       0.041
@@ -108,8 +108,8 @@
     "target_period_s": 26.0,
     "window_hours": 6.0
   },
-  "expires_at_utc": "2026-06-29T02:16:01.752542+00:00",
-  "generated_at_utc": "2026-06-28T14:16:01.752542+00:00",
+  "expires_at_utc": "2026-06-29T07:46:16.639704+00:00",
+  "generated_at_utc": "2026-06-28T19:46:16.639704+00:00",
   "history": [
     {
       "best_snr": 5.4645224771470735,
@@ -350,25 +350,37 @@
       "quality_status": "weak_single_station",
       "stations_attempted": 6,
       "stations_detected": 1
+    },
+    {
+      "best_snr": 4.895564608327046,
+      "best_station_code": "II.BFO",
+      "detected": true,
+      "frequency_hz": 0.039629629629629626,
+      "measured_at_utc": "2026-06-28T19:46:16.639679+00:00",
+      "median_snr": 2.850617257118496,
+      "period_s": 25.233644859813086,
+      "quality_status": "confirmed",
+      "stations_attempted": 6,
+      "stations_detected": 3
     }
   ],
   "last_good_measurement": {
     "best_station": {
-      "code": "II.SHEL",
+      "code": "II.BFO",
       "detected": true,
       "error": null,
-      "frequency_hz": 0.03674540682414698,
-      "label": "St. Helena, South Atlantic",
-      "period_s": 27.214285714285715,
-      "snr": 6.877276272325875
+      "frequency_hz": 0.040284804197114485,
+      "label": "Black Forest, Germany",
+      "period_s": 24.823255813953487,
+      "snr": 4.895564608327046
     },
-    "confidence_label": "medium (multiple stations, some spread)",
-    "frequency_hz": 0.03901379779138869,
-    "measured_at_utc": "2026-06-27T19:44:09.254623+00:00",
-    "median_snr": 3.508256372488344,
-    "period_s": 25.631957323076218,
+    "confidence_label": "high (multiple stations, tight agreement)",
+    "frequency_hz": 0.039629629629629626,
+    "measured_at_utc": "2026-06-28T19:46:16.639679+00:00",
+    "median_snr": 2.850617257118496,
+    "period_s": 25.233644859813086,
     "stations_attempted": 6,
-    "stations_detected": 4
+    "stations_detected": 3
   },
   "schema_version": "1.0.0"
 }
