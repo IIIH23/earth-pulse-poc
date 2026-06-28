@@ -27,8 +27,8 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Success criteria: Note structure, sync direction, and conflict behavior are documented. Sync tool implemented.
 - Estimated effort: M
 - Status: 🔄 in progress
-- Progress: Sync spec drafted at docs/STAGE_3_SPEC.md (one-way Git→Obsidian, naming convention, conflict behavior). Commit 38f08e1.
-- Next actionable task: Implement tools/obsidian_sync.py to mirror STATE/ROADMAP/LOG into docs/obsidian/.
+- Progress: Sync spec drafted at docs/STAGE_3_SPEC.md (one-way Git→Obsidian, naming convention, conflict behavior). Commit 38f08e1. Sync tool implemented: tools/obsidian_sync.py with 10 tests. Commit a96a6bd.
+- Next actionable task: Wire obsidian sync into autopilot cron cycle (auto-run after state updates), create initial docs/obsidian/ output.
 
 ## 4. Hermes-Linear
 
@@ -102,7 +102,8 @@ Pulse of Earth is a research and software project for collecting, processing, an
 
 ## Recent updates (autopilot)
 
-- 2026-06-28T13:30:00Z: Stage 2 confirmed complete. Stage 3 (Hermes-Obsidian) spec drafted at docs/Stage_3_SPEC.md — one-way Git→Obsidian sync, conflict behavior, note naming. Next: implement tools/obsidian_sync.py. Commit 38f08e1.
+- 2026-06-28T15:36:00Z: Stage 3 — implemented tools/obsidian_sync.py (stdlib-only Python CLI, --dry-run, --vault-path). 10 pytest tests passing. Total suite: 62 passed, 3 skipped. Commit a96a6bd.
+- 2026-06-28T13:30:00Z: Stage 2 confirmed complete. Stage 3 (Hermes-Obsidian) spec drafted at docs/STAGE_3_SPEC.md — one-way Git→Obsidian sync, conflict behavior, note naming. Next: implement tools/obsidian_sync.py. Commit 38f08e1.
 - 2026-06-27T19:57:00Z: Staging bootstrap executed on hermes-staging-01 (157.180.125.174). Bootstrap completed, 13 SSH smoke tests passed. Commits 628fdfe, 004abec on feat/staging-bootstrap.
 - 2026-06-27T19:51:00Z: Paused cron pulse-autopilot (job dd25d4fecd66) due to repeated error status.
 - 2026-06-28T03:10:00Z: Added tools/healthcheck.py (ported from scripts/check-health.sh) — stdlib-only Python CLI with --json, --verbose, --exit-zero flags. 10 pytest tests added and passing. Commit dea410f.

@@ -1,5 +1,20 @@
 # Autopilot Log
 
+## 2026-06-28T15:36:00Z — Cycle 11
+
+- **Action**: Stage 3 (Hermes-Obsidian) first implementation — tools/obsidian_sync.py.
+- **Worker**: Codex CLI (sandbox: workspace-write) implemented; Hermes reviewed tests and committed.
+- **Changes**:
+  - `tools/obsidian_sync.py`: new — stdlib-only Python CLI, mirrors AUTOPILOT_STATE.md, ROADMAP.md, daily log entry into docs/obsidian/ with --dry-run and --vault-path flags.
+  - `tests/test_obsidian_sync.py`: new — 10 pytest tests (extract, sync, dry-run, CLI, missing-source error).
+  - `AUTOPILOT_STATE.md`: updated cycle to 11, task to Stage 3 sync tool done.
+  - `ROADMAP.md`: Stage 3 progress updated with sync tool, next action: wire into autopilot cron.
+  - `logs/AUTOPILOT_LOG.md`: this entry.
+- **Tests**: 62 passed, 3 skipped (10 new tests, 0 regressions). SSH smoke tests require staging host.
+- **Commit**: a96a6bd
+- **Notes**: One-way Git→Obsidian sync now available. Human Obsidian edits are preserved on re-run (tool only overwrites managed files, not user-created notes). Next: auto-run tool in autopilot cycles, create initial mirror output.
+- **Next**: Wire obsidian_sync.py into autopilot cron as post-state-update step; generate first docs/obsidian/ mirror.
+
 ## 2026-06-28T13:30:00Z — Cycle 10
 
 - **Action**: Stage 2 confirmed complete (52 tests, all 4 tools done). Advanced to Stage 3 (Hermes-Obsidian) — wrote sync specification.
