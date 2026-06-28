@@ -1,6 +1,16 @@
 # Autopilot Log
 
-## 2026-06-26T19:20:02Z
+## 2026-06-28T06:00:00Z
+
+- Action: Autopilot cycle 6 — added tools/rollback.py (ported from scripts/rollback.sh) and wired healthcheck + telegram_notify into CI.
+- Worker: Codex CLI (sandbox: workspace-write) implemented tools/rollback.py + tests/test_rollback.py; Hermes wired CI workflow.
+- Files created: tools/rollback.py (264 lines, stdlib-only, subcommands: current/list/rollback, --dry-run, --exit-zero), tests/test_rollback.py (218 lines, 12 tests), tools/__init__.py.
+- Files modified: .github/workflows/smoke.yml (added healthcheck --exit-zero --json and telegram_notify --dry-run steps).
+- Tests: tests/test_rollback.py — 12 PASSED; full suite (inventory + healthcheck + telegram_notify + rollback) — 35 PASSED.
+- Commit: 7b911e0
+- Next: Update scripts/check-health.sh and scripts/rollback.sh to delegate to their Python tool counterparts (or add py_compile validation for tools/).
+
+## 2026-06-28T03:30:00Z
 
 - Created initial project roadmap, autopilot state, decisions log, and autopilot log.
 - Intent: establish minimal operating records for the first autopilot cycle.
