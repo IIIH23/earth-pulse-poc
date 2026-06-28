@@ -1,5 +1,15 @@
 # Autopilot Log
 
+## 2026-06-29T01:00:00Z — Cycle 16
+
+- **Action**: Stage 5 (n8n Workflows) Phase 2 — implemented System Inventory Snapshot workflow.
+- **Worker**: Codex CLI (sandbox: workspace-write) implemented the tool + tests; Hermes reviewed, ran canonical tests, committed.
+- **Files created**: tools/snapshot.py (185 lines, stdlib-only CLI, collect_snapshot/save_snapshot/main, --output-dir/--keep/--dry-run/--verbose, exit codes 0/1/2), tests/test_snapshot.py (133 lines, 9 tests).
+- **Tests**: tests/test_snapshot.py — 9 PASSED; full suite — 87 PASSED, 3 skipped (SSH staging VPS unreachable — network-dependent skips, not regressions).
+- **Commit**: 4da82bb
+- **Notes**: Cron task prompt was stale (asked for Stage 2 Port Logic, already done). Advanced to actual current work (Stage 5 Phase 2). snapshot.py reuses tools.healthcheck.run_checks() and adds system metadata (hostname, uptime, load average, network interfaces). Standard package imports used (from tools import healthcheck, from tools import snapshot) — no importlib misuse.
+- **Next**: Stage 5 Phase 3 — trend analysis over snapshots or wire into daily cron on staging VPS.
+
 ## 2026-06-29T00:30:00Z — Cycle 15
 
 - **Action**: Stage 5 (n8n Workflows) Phase 1 — implemented Daily Healthcheck Report workflow.

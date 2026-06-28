@@ -46,9 +46,9 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Objectives: Design repeatable n8n workflows for scheduled or event-driven project automation.
 - Success criteria: Initial workflow specs include triggers, inputs, outputs, retries, and failure handling.
 - Estimated effort: L
-- Status: 🔵 active (Phase 1 of 4 complete)
-- Progress: First workflow selected — Daily Healthcheck Report. Spec at docs/STAGE_5_SPEC.md. Implementation: tools/healthcheck_report.py (stdlib-only CLI, 3 destinations: telegram/stdout/file, retry with backoff, exit codes 0/1/2/3). 8 pytest tests passing. Reuses Stage 2 tools (healthcheck.py, telegram_notify.py).
-- Next actionable task: Stage 5 Phase 2 — implement second workflow candidate (GitHub PR Merged → Linear Update) or wire healthcheck_report into cron on staging VPS.
+- Status: 🔵 active (Phase 2 of 4 complete)
+- Progress: First workflow selected — Daily Healthcheck Report. Spec at docs/STAGE_5_SPEC.md. Implementation: tools/healthcheck_report.py (stdlib-only CLI, 3 destinations: telegram/stdout/file, retry with backoff, exit codes 0/1/2/3). 8 pytest tests passing. Reuses Stage 2 tools (healthcheck.py, telegram_notify.py). Second workflow: tools/snapshot.py (System Inventory Snapshot — timestamped JSON with health checks + hostname/uptime/load/network metadata, --keep pruning, --dry-run, exit codes 0/1/2). 9 pytest tests passing.
+- Next actionable task: Stage 5 Phase 3 — implement trend analysis over snapshots OR wire snapshot.py into daily cron on staging VPS.
 
 ## 6. GitHub Sync
 
@@ -108,6 +108,7 @@ Pulse of Earth is a research and software project for collecting, processing, an
 
 ## Recent updates (autopilot)
 
+- 2026-06-29T01:00:00Z: Cycle 16 — Stage 5 Phase 2 complete. Implemented System Inventory Snapshot workflow (tools/snapshot.py + 9 tests). Timestamped JSON snapshots with health checks + hostname/uptime/load/network metadata. --keep pruning, --dry-run, exit codes 0/1/2. Full suite: 87 passed, 3 skipped (SSH staging). Commit 4da82bb.
 - 2026-06-29T00:30:00Z: Cycle 15 — Stage 5 Phase 1 complete. Implemented Daily Healthcheck Report workflow (tools/healthcheck_report.py + 8 tests). Spec at docs/STAGE_5_SPEC.md. Full suite: 61 passed, 20 skipped (SSH staging). Commit pending.
 - 2026-06-28T19:56:00Z: Cycle 13
 - 2026-06-28T17:45:00Z: Stage 3 complete — ran obsidian_sync.py to generate docs/obsidian/ output (STATE.md, ROADMAP.md, LOG-2026-06-28.md). Updated STAGE_3_SPEC.md to IMPLEMENTED status with autopilot wiring instructions. Full suite: 62 passed, 3 skipped. Advancing to Stage 4.
