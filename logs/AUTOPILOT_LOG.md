@@ -103,6 +103,15 @@
 - Files changed: tests/test_inventory_pytest.py, AUTOPILOT_STATE.md, ROADMAP.md, logs/AUTOPILOT_LOG.md
 - Next: prepare CI wiring for focused tests and a reproducible verifier script for CI/human runs.
 
+## 2026-06-28T06:30:00Z
+
+- Action: Autopilot cycle 7 — refactored scripts/check-health.sh to use Python tool backends.
+- Worker: Codex CLI (sandbox: workspace-write) implemented the refactor; Hermes reviewed and committed.
+- Files changed: scripts/check-health.sh (87 lines, delegates disk/memory/docker/ufw to tools/healthcheck.py, alerts to tools/telegram_notify.py).
+- Tests: full suite — 52 PASSED, 3 skipped. Bash syntax check passed. Live run verified (3 PASS / 3 FAIL in local env — expected: docker/ufw not available).
+- Commit: fef602e
+- Next: Refactor scripts/rollback.sh to call tools/rollback.py as backend.
+
 ## 2026-06-28T03:10:00Z
 
 - Action: Autopilot cycle 4 — added tools/healthcheck.py (ported from scripts/check-health.sh).
