@@ -53,9 +53,11 @@ Pulse of Earth is a research and software project for collecting, processing, an
 ## 6. GitHub Sync
 
 - Objectives: Establish repository sync expectations for issues, docs, status, and automation outputs.
-- Success criteria: Sync scope and manual approval boundaries are documented.
+- Success criteria: Sync scope and manual approval boundaries are documented. Sync checker implemented.
 - Estimated effort: M
-- Next actionable task: Define which project artifacts should be mirrored to GitHub.
+- Status: 🔵 active (Phase 1 of 2 complete)
+- Progress: Sync spec drafted at docs/STAGE_6_SPEC.md (auto-synced artifacts, exclusions, manual-approval boundaries, sync direction). Implementation: tools/github_sync.py (stdlib-only CLI, check/status commands, --dry-run, --json, exit codes 0/1/2). 12 pytest tests passing.
+- Next actionable task: Stage 6 Phase 2 — wire github_sync.py into CI workflow as a drift check step.
 
 ## 7. Tests & Smoke-Tests
 
@@ -108,6 +110,7 @@ Pulse of Earth is a research and software project for collecting, processing, an
 
 ## Recent updates (autopilot)
 
+- 2026-06-29T09:11:00Z: Cycle 19 — Stage 6 Phase 1 complete. Implemented GitHub sync checker (tools/github_sync.py + 12 tests). check/status commands, --dry-run, --json, exit codes 0/1/2. Spec at docs/STAGE_6_SPEC.md. Full suite: 124 passed, 3 skipped. Commit c0ae8c3.
 - 2026-06-29T02:00:00Z: Cycle 17 — Stage 5 Phase 3 complete. Implemented Trend Analysis workflow (tools/trend.py + 15 tests). Reads snapshot collection, computes uptime/load/network/health statistics over time. Human-readable report or JSON output. Exit codes 0/1/2. Full suite: 100 passed, 20 skipped (SSH staging VPS unreachable). Commit 87c27b4.
 - 2026-06-29T01:00:00Z: Cycle 16 — Stage 5 Phase 2 complete. Implemented System Inventory Snapshot workflow (tools/snapshot.py + 9 tests). Timestamped JSON snapshots with health checks + hostname/uptime/load/network metadata. --keep pruning, --dry-run, exit codes 0/1/2. Full suite: 87 passed, 3 skipped (SSH staging). Commit 4da82bb.
 - 2026-06-29T00:30:00Z: Cycle 15 — Stage 5 Phase 1 complete. Implemented Daily Healthcheck Report workflow (tools/healthcheck_report.py + 8 tests). Spec at docs/STAGE_5_SPEC.md. Full suite: 61 passed, 20 skipped (SSH staging). Commit pending.

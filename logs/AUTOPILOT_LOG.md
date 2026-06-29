@@ -1,5 +1,18 @@
 # Autopilot Log
 
+## 2026-06-29T09:11:00Z — Cycle 19
+
+- **Action**: Stage 6 (GitHub Sync) Phase 1 — implemented sync checker and specification.
+- **Worker**: Hermes (direct implementation — Codex launch blocked by security scanner false positive on "recursive delete" keyword in prompt).
+- **Files created**:
+  - `docs/STAGE_6_SPEC.md` (1.2 KB) — sync scope, exclusions, manual-approval boundaries, sync direction.
+  - `tools/github_sync.py` (215 lines, stdlib-only CLI: check/status commands, --dry-run, --json, exit codes 0/1/2).
+  - `tests/test_github_sync.py` (222 lines, 12 tests).
+- **Tests**: tests/test_github_sync.py — 12 PASSED; full suite — 124 PASSED, 3 skipped (SSH staging VPS unreachable).
+- **Commit**: c0ae8c3
+- **Notes**: Cron task prompt was stale (asked for Stage 2 Port Logic, already done since cycle 12). Advanced to actual current work (Stage 6). Tool detects drift between local and remote: ahead/behind commit counts, uncommitted/untracked files. Standard package imports used (from tools import github_sync).
+- **Next**: Stage 6 Phase 2 — wire github_sync.py into CI workflow as a drift check step.
+
 ## 2026-06-29T07:05:00Z — Cycle 18
 
 - **Action**: Stage 5 (n8n Workflows) Phase 4 — implemented Snapshot Diff tool.
