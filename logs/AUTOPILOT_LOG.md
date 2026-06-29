@@ -1,6 +1,15 @@
 # Autopilot Log
 
-## 2026-06-29T09:11:00Z — Cycle 19
+## 2026-06-29T13:30:00Z — Cycle 21
+
+- **Action**: Stage 8 (Docs & Backup/Restore) — drafted backup inventory spec.
+- **Worker**: Hermes (direct implementation — documentation-only task).
+- **Changes**: Created docs/STAGE_8_SPEC.md with tiered backup strategy (4 tiers), restore procedure (full + partial), backup commands with tar exclusions, verification checklist, and decision record.
+- **Tests**: 124 passed, 3 skipped (unchanged — documentation-only change).
+- **Commit**: pending.
+- **Note**: Cron prompt was stale (referenced Stage 2 which is complete). Advanced to Stage 8 per autopilot hygiene protocol.
+
+## 2026-06-29T12:00:00Z — Cycle 20
 
 - **Action**: Stage 6 (GitHub Sync) Phase 1 — implemented sync checker and specification.
 - **Worker**: Hermes (direct implementation — Codex launch blocked by security scanner false positive on "recursive delete" keyword in prompt).

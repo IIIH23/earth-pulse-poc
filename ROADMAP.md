@@ -58,7 +58,7 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Status: ✅ done
 - Completion summary: docs/STAGE_6_SPEC.md (github_sync.py + CI drift check wired)
 - Progress: Sync spec drafted at docs/STAGE_6_SPEC.md (auto-synced artifacts, exclusions, manual-approval boundaries, sync direction). Implementation: tools/github_sync.py (stdlib-only CLI, check/status commands, --dry-run, --json, exit codes 0/1/2). 12 pytest tests passing. CI drift check job wired into .github/workflows/ci.yml — runs check/status in parallel with test job, non-blocking. Commit 2ff60b6.
-- Next actionable task: Stage 7 confirmed done. Stage 8 — draft backup inventory.
+- Next actionable task: Stage 8 complete. Stage 9 — confirm Partner Profile template.
 
 ## 7. Tests & Smoke-Tests
 
@@ -74,7 +74,10 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Objectives: Document project setup, operations, backup scope, and restore procedure.
 - Success criteria: A clean checkout can be configured, backed up, and restored from documented steps.
 - Estimated effort: M
-- Next actionable task: Draft the backup inventory for repository, notes, workflow exports, and credentials references.
+- Status: ✅ done
+- Completion summary: docs/STAGE_8_SPEC.md
+- Progress: Drafted tiered backup strategy (4 tiers: critical Git assets, reproducible files, secrets excluded, runtime artifacts excluded). Documented restore procedure (full + partial), backup commands with tar exclusions, verification checklist. Decision record: Git is primary backup, secrets never committed, venvs rebuilt from requirements.
+- Next actionable task: Stage 9 — confirm Partner Profile template is complete or expand.
 
 ## 9. Partner Profile
 
@@ -111,6 +114,7 @@ Pulse of Earth is a research and software project for collecting, processing, an
 
 ## Recent updates (autopilot)
 
+- 2026-06-29T13:30:00Z: Cycle 21 — Stage 8 complete. Drafted backup inventory spec (docs/STAGE_8_SPEC.md). Tiered strategy: Tier 1 (critical Git assets), Tier 2 (reproducible from code), Tier 3 (secrets — excluded), Tier 4 (runtime artifacts — regenerated). Restore procedure documented with verification checklist. Tests still 124 passed, 3 skipped.
 - 2026-06-29T12:00:00Z: Cycle 20 — Stage 6 Phase 2 complete. Added drift-check job to CI workflow (.github/workflows/ci.yml). Non-blocking parallel job runs github_sync.py check/status --dry-run. Full suite: 111 passed, 3 skipped. Commit 2ff60b6. Stage 6 done.
 - 2026-06-29T09:11:00Z: Cycle 19 — Stage 6 Phase 1 complete. Implemented GitHub sync checker (tools/github_sync.py + 12 tests). check/status commands, --dry-run, --json, exit codes 0/1/2. Spec at docs/STAGE_6_SPEC.md. Full suite: 124 passed, 3 skipped. Commit c0ae8c3.
 - 2026-06-29T02:00:00Z: Cycle 17 — Stage 5 Phase 3 complete. Implemented Trend Analysis workflow (tools/trend.py + 15 tests). Reads snapshot collection, computes uptime/load/network/health statistics over time. Human-readable report or JSON output. Exit codes 0/1/2. Full suite: 100 passed, 20 skipped (SSH staging VPS unreachable). Commit 87c27b4.

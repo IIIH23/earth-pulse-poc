@@ -1,9 +1,8 @@
 # Autopilot State
 
 - Current autopilot role: Coordinate repository setup and maintain lightweight project operating records.
-- Current cycle number: 20
-- Task in progress: Stage 6 Phase 2 complete — CI drift check wired.
-- Last action: Cycle 20 — added drift-check job to .github/workflows/ci.yml. Runs tools/github_sync.py check --dry-run --json and status --dry-run. Non-blocking (needs: lint only, not in deployment gate chain). Full suite: 111 passed, 3 skipped (SSH staging VPS unreachable). Commit 2ff60b6.
-- All Stages 1-5 complete: tools/inventory.py, tools/healthcheck.py, tools/telegram_notify.py, tools/rollback.py ported. obsidian_sync.py + linear_sync.py implemented. Stage 5 workflows: healthcheck_report.py (Phase 1) + snapshot.py (Phase 2) + trend.py (Phase 3) + diff_snapshots.py (Phase 4) done.
-- Stage 6 complete: github_sync.py (Phase 1) + CI drift check (Phase 2).
-- Next action: Stage 8 — draft backup inventory for repository, notes, workflow exports, and credentials references.
+- Current cycle number: 21
+- Task in progress: Stage 8 complete — backup inventory spec drafted.
+- Last action: Cycle 21 — created docs/STAGE_8_SPEC.md with tiered backup strategy (4 tiers), restore procedure, backup commands, and verification checklist. Stage 8 done.
+- All Stages 1-8 complete: tools/inventory.py, tools/healthcheck.py, tools/telegram_notify.py, tools/rollback.py ported (Stage 2). obsidian_sync.py + linear_sync.py implemented (Stages 3-4). Stage 5 workflows: healthcheck_report.py + snapshot.py + trend.py + diff_snapshots.py done. Stage 6: github_sync.py + CI drift check done. Stage 7: staging smoke tests done. Stage 8: backup inventory spec done.
+- Next action: Stage 9 — confirm Partner Profile template is complete or expand with role-specific entries.
