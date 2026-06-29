@@ -54,9 +54,9 @@ jobs:
         with:
           python-version: '3.11'
       - name: Check GitHub drift
-        run: python3 tools/github_sync.py check --dry-run --json
+        run: python3 tools/github_sync.py --dry-run check --json
       - name: Show GitHub sync status
-        run: python3 tools/github_sync.py status --dry-run
+        run: python3 tools/github_sync.py --dry-run status
 
   security:
     name: Security Scan
