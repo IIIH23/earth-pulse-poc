@@ -1,5 +1,14 @@
 # Autopilot Log
 
+## 2026-06-29T07:05:00Z — Cycle 18
+
+- **Action**: Stage 5 (n8n Workflows) Phase 4 — implemented Snapshot Diff tool.
+- **Worker**: Codex CLI (sandbox: workspace-write) implemented the tool; Hermes reviewed and verified.
+- **Files created**: tools/diff_snapshots.py (264 lines, stdlib-only), tests/test_diff_snapshots.py (168 lines, 10 tests).
+- **Tests**: tests/test_diff_snapshots.py — 10 PASSED; full suite — 112 PASSED, 3 skipped (SSH staging VPS unreachable).
+- **Commit**: pending.
+- **Next**: Stage 6 (GitHub Sync) — define which project artifacts should be mirrored to GitHub.
+
 ## 2026-06-29T02:00:00Z — Cycle 17
 
 - **Action**: Stage 5 (n8n Workflows) Phase 3 — implemented Trend Analysis workflow.

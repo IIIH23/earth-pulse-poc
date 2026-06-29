@@ -46,9 +46,9 @@ Pulse of Earth is a research and software project for collecting, processing, an
 - Objectives: Design repeatable n8n workflows for scheduled or event-driven project automation.
 - Success criteria: Initial workflow specs include triggers, inputs, outputs, retries, and failure handling.
 - Estimated effort: L
-- Status: 🔵 active (Phase 3 of 4 complete)
-- Progress: First workflow selected — Daily Healthcheck Report. Spec at docs/STAGE_5_SPEC.md. Implementation: tools/healthcheck_report.py (stdlib-only CLI, 3 destinations: telegram/stdout/file, retry with backoff, exit codes 0/1/2/3). 8 pytest tests passing. Reuses Stage 2 tools (healthcheck.py, telegram_notify.py). Second workflow: tools/snapshot.py (System Inventory Snapshot — timestamped JSON with health checks + hostname/uptime/load/network metadata, --keep pruning, --dry-run, exit codes 0/1/2). 9 pytest tests passing. Third workflow: tools/trend.py (Trend Analysis — reads snapshot collection, computes uptime/load/network/health statistics over time, human-readable report or JSON, exit codes 0/1/2). 15 pytest tests passing.
-- Next actionable task: Stage 5 Phase 4 — wire trend.py into daily cron on staging VPS OR implement snapshot comparison (diff between two snapshots).
+- Status: 🔵 active (Phase 4 of 4 complete)
+- Progress: First workflow selected — Daily Healthcheck Report. Spec at docs/STAGE_5_SPEC.md. Implementation: tools/healthcheck_report.py (stdlib-only CLI, 3 destinations: telegram/stdout/file, retry with backoff, exit codes 0/1/2/3). 8 pytest tests passing. Reuses Stage 2 tools (healthcheck.py, telegram_notify.py). Second workflow: tools/snapshot.py (System Inventory Snapshot — timestamped JSON with health checks + hostname/uptime/load/network metadata, --keep pruning, --dry-run, exit codes 0/1/2). 9 pytest tests passing. Third workflow: tools/trend.py (Trend Analysis — reads snapshot collection, computes uptime/load/network/health statistics over time, human-readable report or JSON, exit codes 0/1/2). 15 pytest tests passing. Fourth workflow: tools/diff_snapshots.py (Snapshot Diff — compares two snapshot JSON files, reports hostname/uptime/load/network/checks deltas, text or JSON output, exit codes 0/1/2). 10 pytest tests passing.
+- Next actionable task: Stage 5 complete. Move to Stage 6 (GitHub Sync).
 
 ## 6. GitHub Sync
 
