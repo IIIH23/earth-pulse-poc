@@ -44,6 +44,20 @@ jobs:
       - name: Run smoke test
         run: bash tests/smoke_test.sh
 
+  drift-check:
+    name: Drift Check
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check GitHub drift
+        run: python3 tools/github_sync.py check --dry-run --json
+      - name: Show GitHub sync status
+        run: python3 tools/github_sync.py status --dry-run
+
   security:
     name: Security Scan
     runs-on: ubuntu-latest
