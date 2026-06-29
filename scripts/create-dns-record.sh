@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Create Cloudflare A record via API
+# Requires: CF_API_TOKEN, CF_ZONE_ID env vars
+set -euo pipefail
+
+: "${CF_API_TOKEN:?Usage: CF_API_TOKEN=xxx CF_ZONE_ID=xxx bash scripts/create-dns-record.sh}"
+: "${CF_ZONE_ID:?Usage: CF_API_TOKEN=xxx CF_ZONE_ID=xxx bash scripts/create-dns-record.sh}"
+
+DOMAIN="${1:-earthbit.staging.terrabits.org}"
+IP="${2:-157.180.125.174}"
+
+echo "Creating DNS record: $DOMAIN → $IP"
+
+curl -s -X POST \
+  -H "Authorization: Bearer *** \
+  -H "Content-Type: application/json" \
+  "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/dns_records" \
+  -d "{
+    \"type\": \"A\",
+    \"name\": \"${DOMAIN}\",
+    \"content\": \"${IP}\",
+    \"ttl\": 300,
+    \"proxied\": false
+  }" | python3 -c "import sys,json; r=json.load(sys.stdin); print('Success:', r.get('success')); [print('  ', rec['name'], '→', rec['content']) for rec in r.get('result',[])]"
