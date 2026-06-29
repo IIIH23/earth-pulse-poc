@@ -160,6 +160,20 @@
 - Action: Fixed smoke_test.sh hang — find command now excludes all .venv* directories. Previously compiled 836 pip package files causing timeout. Now compiles 4 project files in <1s.
 - Commit: 6c7a3fe
 
+## 2026-06-29T12:00:00Z
+
+- Action: Cycle 20 — Stage 6 Phase 2 complete. Added drift-check job to CI workflow (.github/workflows/ci.yml). Non-blocking parallel job runs github_sync.py check --dry-run --json and status --dry-run. Depends only on lint, does not gate deployment.
+- Worker: Codex CLI (gpt-5.5) — YAML edit. Hermes (GPT-5 mini) — verification, state updates.
+- Files modified: .github/workflows/ci.yml (+14 lines).
+- Tests: Full suite — 111 passed, 3 skipped (SSH staging VPS unreachable). No regressions.
+- Commit: 2ff60b6
+- Next: Stage 8 (Docs & Backup/Restore) — draft backup inventory for repository, notes, workflow exports, and credentials references.
+
+## 2026-06-29T09:11:00Z
+
+- Action: Cycle 19 — Stage 6 Phase 1 complete. Implemented tools/github_sync.py (check/status commands, --dry-run, --json, exit codes 0/1/2). Added 12 pytest tests. Wrote docs/STAGE_6_SPEC.md.
+- Commit: c0ae8c3
+
 ## 2026-06-27T08:43:43Z
 
 - Action: Added focused pytest for tools/inventory.py (commit cdc8b63).
