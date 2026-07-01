@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-01-01T00:00:00+00:00",
+  "expires_at_utc": "2026-01-01T12:00:00+00:00",
+  "app_pulse": {
+    "source": "baseline",
+    "period_s": 26.0,
+    "frequency_hz": 0.038461538461538464,
+    "fresh": false,
+    "measured_at_utc": null
+  },
+  "breathing_rhythm": {
+    "mode": "fixed_13_13",
+    "period_s": 26.0,
+    "inhale_s": 13.0,
+    "exhale_s": 13.0,
+    "locked": true
+  },
+  "current_measurement": {
+    "measured_at_utc": "2026-01-01T00:00:00+00:00",
+    "window_hours": 6.0,
+    "target_frequency_hz": 0.038461538461538464,
+    "target_period_s": 26.0,
+    "target_band_hz": [0.036, 0.041],
+    "background_bands_hz": [[0.028, 0.0345], [0.0425, 0.049]],
+    "snr_threshold": 3.0,
+    "detected": false,
+    "quality_status": "not_detected",
+    "confidence_label": "not detected",
+    "period_s": null,
+    "frequency_hz": null,
+    "stations_detected": 0,
+    "stations_attempted": 6,
+    "station_errors": 0,
+    "best_station": null,
+    "median_snr": 1.5,
+    "stations": []
+  },
+  "last_good_measurement": null,
+  "history": []
+}

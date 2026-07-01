@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/IIIH23/earth-pulse-poc/contracts/earth-pulse.schema.json",
+  "title": "Pulse of Earth public feed",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at_utc",
+    "expires_at_utc",
+    "app_pulse",
+    "breathing_rhythm",
+    "current_measurement",
+    "last_good_measurement",
+    "history"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "generated_at_utc": {"type": "string", "format": "date-time"},
+    "expires_at_utc": {"type": "string", "format": "date-time"},
+    "app_pulse": {"$ref": "#/$defs/appPulse"},
+    "breathing_rhythm": {"$ref": "#/$defs/breathingRhythm"},
+    "current_measurement": {"$ref": "#/$defs/currentMeasurement"},
+    "last_good_measurement": {
+      "oneOf": [
+        {"$ref": "#/$defs/lastGoodMeasurement"},
+        {"type": "null"}
+      ]
+    },
+    "history": {
+      "type": "array",
+      "maxItems": 24,
+      "items": {"$ref": "#/$defs/historyItem"}
+    }
+  },
+  "$defs": {
+    "nullableNumber": {"type": ["number", "null"]},
+    "nullableString": {"type": ["string", "null"]},
+    "qualityStatus": {
+      "enum": ["confirmed", "weak_single_station", "not_detected"]
+    },
+    "appPulse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "period_s",
+        "frequency_hz",
+        "fresh",
+        "measured_at_utc"
+      ],
+      "properties": {
+        "source": {
+          "enum": [
+            "current_measurement",
+            "last_good_measurement",
+            "baseline"
+          ]
+        },
+        "period_s": {"type": "number", "exclusiveMinimum": 0},
+        "frequency_hz": {"type": "number", "exclusiveMinimum": 0},
+        "fresh": {"type": "boolean"},
+        "measured_at_utc": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        }
+      }
+    },
+    "breathingRhythm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "period_s", "inhale_s", "exhale_s", "locked"],
+      "properties": {
+        "mode": {"const": "fixed_13_13"},
+        "period_s": {"const": 26.0},
+        "inhale_s": {"const": 13.0},
+        "exhale_s": {"const": 13.0},
+        "locked": {"const": true}
+      }
+    },
+    "station": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "label",
+        "period_s",
+        "frequency_hz",
+        "snr",
+        "detected",
+        "error"
+      ],
+      "properties": {
+        "code": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "period_s": {"$ref": "#/$defs/nullableNumber"},
+        "frequency_hz": {"$ref": "#/$defs/nullableNumber"},
+        "snr": {"$ref": "#/$defs/nullableNumber"},
+        "detected": {"type": "boolean"},
+        "error": {"$ref": "#/$defs/nullableString"}
+      }
+    },
+    "currentMeasurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "measured_at_utc",
+        "window_hours",
+        "target_frequency_hz",
+        "target_period_s",
+        "target_band_hz",
+        "background_bands_hz",
+        "snr_threshold",
+        "detected",
+        "quality_status",
+        "confidence_label",
+        "period_s",
+        "frequency_hz",
+        "stations_detected",
+        "stations_attempted",
+        "station_errors",
+        "best_station",
+        "median_snr",
+        "stations"
+      ],
+      "properties": {
+        "measured_at_utc": {"type": "string", "format": "date-time"},
+        "window_hours": {"type": "number", "exclusiveMinimum": 0},
+        "target_frequency_hz": {"type": "number", "exclusiveMinimum": 0},
+        "target_period_s": {"type": "number", "exclusiveMinimum": 0},
+        "target_band_hz": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"type": "number"}
+        },
+        "background_bands_hz": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {"type": "number"}
+          }
+        },
+        "snr_threshold": {"type": "number", "exclusiveMinimum": 0},
+        "detected": {"type": "boolean"},
+        "quality_status": {"$ref": "#/$defs/qualityStatus"},
+        "confidence_label": {"type": "string"},
+        "period_s": {"$ref": "#/$defs/nullableNumber"},
+        "frequency_hz": {"$ref": "#/$defs/nullableNumber"},
+        "stations_detected": {"type": "integer", "minimum": 0},
+        "stations_attempted": {"type": "integer", "minimum": 0},
+        "station_errors": {"type": "integer", "minimum": 0},
+        "best_station": {
+          "oneOf": [
+            {"$ref": "#/$defs/station"},
+            {"type": "null"}
+          ]
+        },
+        "median_snr": {"$ref": "#/$defs/nullableNumber"},
+        "stations": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/station"}
+        }
+      }
+    },
+    "lastGoodMeasurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "measured_at_utc",
+        "period_s",
+        "frequency_hz",
+        "confidence_label",
+        "stations_detected",
+        "stations_attempted",
+        "best_station",
+        "median_snr"
+      ],
+      "properties": {
+        "measured_at_utc": {"type": "string", "format": "date-time"},
+        "period_s": {"type": "number", "exclusiveMinimum": 0},
+        "frequency_hz": {"type": "number", "exclusiveMinimum": 0},
+        "confidence_label": {"type": "string"},
+        "stations_detected": {"type": "integer", "minimum": 1},
+        "stations_attempted": {"type": "integer", "minimum": 1},
+        "best_station": {"$ref": "#/$defs/station"},
+        "median_snr": {"$ref": "#/$defs/nullableNumber"}
+      }
+    },
+    "historyItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "measured_at_utc",
+        "detected",
+        "quality_status",
+        "period_s",
+        "frequency_hz",
+        "stations_detected",
+        "stations_attempted",
+        "best_station_code",
+        "best_snr",
+        "median_snr"
+      ],
+      "properties": {
+        "measured_at_utc": {"type": "string", "format": "date-time"},
+        "detected": {"type": "boolean"},
+        "quality_status": {"$ref": "#/$defs/qualityStatus"},
+        "period_s": {"$ref": "#/$defs/nullableNumber"},
+        "frequency_hz": {"$ref": "#/$defs/nullableNumber"},
+        "stations_detected": {"type": "integer", "minimum": 0},
+        "stations_attempted": {"type": "integer", "minimum": 0},
+        "best_station_code": {"$ref": "#/$defs/nullableString"},
+        "best_snr": {"$ref": "#/$defs/nullableNumber"},
+        "median_snr": {"$ref": "#/$defs/nullableNumber"}
+      }
+    }
+  }
+}

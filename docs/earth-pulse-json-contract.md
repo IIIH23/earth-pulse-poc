@@ -3,6 +3,10 @@
 `earth-pulse.json` is the public, serverless API for the app. GitHub Actions
 refreshes it every 6 hours by running the 26-second detector.
 
+The machine-readable JSON Schema is
+`contracts/earth-pulse.schema.json`. Application fixtures and the published feed
+are validated against it in CI.
+
 Public URL shape:
 
 ```text

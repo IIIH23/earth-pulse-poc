@@ -3,6 +3,12 @@
 Earth Pulse proof-of-concept scripts for reading live seismic data from IRIS and
 extracting slow microseism rhythms.
 
+This repository is also the development monorepo for the Pulse of Earth
+application. Add application source under `apps/pulse-of-earth/`; keep detector
+and feed-publication code in this repository.
+
+See `docs/repository-structure.md` for the upload checklist and ownership rules.
+
 ## Scripts
 
 - `earth_period.py` computes the dominant primary microseism period.
@@ -15,13 +21,14 @@ extracting slow microseism rhythms.
 ## Usage
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 
 python earth_period.py --hours 6 --verbose
 python earth_26s_detector.py --hours 24 --verbose
 python earth_26s_detector.py --hours 24 --plot
 python collect_earth_26s.py --hours 6 --verbose
 python generate_earth_pulse_json.py --hours 6 --output earth-pulse.json --verbose
+python -m pytest
 ```
 
 The 26-second line is intermittent. A non-detection for a short or quiet window
@@ -40,7 +47,8 @@ The app should:
   `baseline`.
 
 The exact JSON contract is documented in
-`docs/earth-pulse-json-contract.md`.
+`docs/earth-pulse-json-contract.md` and enforced by
+`contracts/earth-pulse.schema.json`.
 
 ## Repository boundary
 

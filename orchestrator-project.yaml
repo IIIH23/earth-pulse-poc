@@ -4,12 +4,14 @@ project:
   id: pulse-of-earth
   repository: IIIH23/earth-pulse-poc
   default_branch: main
+  application_path: apps/pulse-of-earth
 
 artifacts:
   public_feed:
     path: earth-pulse.json
     url: https://raw.githubusercontent.com/IIIH23/earth-pulse-poc/main/earth-pulse.json
     schema: docs/earth-pulse-json-contract.md
+    machine_readable_schema: contracts/earth-pulse.schema.json
 
 workflows:
   continuous_integration: .github/workflows/ci.yml

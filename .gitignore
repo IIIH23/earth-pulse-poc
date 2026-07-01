@@ -1,7 +1,30 @@
 __pycache__/
 *.py[cod]
 .venv/
+.env
+.env.*
+!.env.example
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local downloads and generated detector artifacts.
+downloads/
 earth_period_plot.png
 earth_period_runs.jsonl
 earth_26s_runs.jsonl
 earth_26s_psd.png
+
+# Application dependencies and build output.
+node_modules/
+dist/
+build/
+.expo/
+.next/
+.turbo/
+coverage/
+android/.gradle/
+android/local.properties
+ios/Pods/
+*.xcworkspace/xcuserdata/
