@@ -41,3 +41,17 @@ The app should:
 
 The exact JSON contract is documented in
 `docs/earth-pulse-json-contract.md`.
+
+## Repository boundary
+
+This repository owns the Pulse of Earth product: seismic acquisition, signal
+processing, collectors, the public JSON contract, and feed publication.
+
+AI agent routing, operational verification, Linear/Obsidian synchronization,
+and notifications are owned by
+[`IIIH23/ai-orchestrator`](https://github.com/IIIH23/ai-orchestrator).
+The repositories integrate through `orchestrator-project.yaml`; Orchestrator is
+a control plane and is not required at runtime to serve `earth-pulse.json`.
+
+See `docs/ai-orchestrator-integration.md` for the ownership and infrastructure
+boundary.
